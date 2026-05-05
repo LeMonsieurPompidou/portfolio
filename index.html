@@ -26,7 +26,9 @@
                 <!-- Navigation Menu -->
                 <nav class="nav" id="nav-menu">
                     <ul class="nav-list">
-                        <li><a href="#about" class="nav-link">Profile EPFL - Robotic Engineer</a></li>
+                        <li><a href="#about" class="nav-link">Profile</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
                         <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
@@ -41,9 +43,43 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">Complex Logic. Hardware Rigor. Robotics Design.</h1>
-                    <p class="hero-subtitle">EPFL Robotics Engineer with a focus on autonomous systems and technology management.</p>
-                    <p class="hero-bio">I bridge the gap between complex hardware architecture and strategic product development. Currently based in Switzerland.</p>
+                    <p class="hero-subtitle">EPFL Robotics Engineer specialized in autonomous systems and neuro-robotics.</p>
+                    <p class="hero-bio">I am deeply interested in understanding how the nervous system can be engaged for both signal acquisition and feedback, with a focus on designing bidirectional devices. I bridge the gap between complex hardware architecture and strategic product development.</p>
                     <a href="#projects" class="cta-button">Explore Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Mechanical Engineering</h3>
+                        <ul class="skill-list">
+                            <li>CAD (Onshape, SolidWorks, Fusion)</li>
+                            <li>Mechanical prototyping (3D printing, laser cutting, conventional machining)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Electrical Engineering</h3>
+                        <ul class="skill-list">
+                            <li>PCB design (KiCad)</li>
+                            <li>Sensors & actuators integration</li>
+                            <li>STM32CubeIDE</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Computer Science</h3>
+                        <ul class="skill-list">
+                            <li>Python, C, C++, C#, Matlab</li>
+                            <li>ROS, Machine Learning, Unity, Webots</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -54,113 +90,140 @@
                 <h2 class="section-title">Projects</h2>
                 
                 <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Neuromuscular Adaptation to Exoskeleton Assistance: A Multi-Modal Analysis</h3>
-                            <div class="project-tags">
-                                <span class="tag">Master Thesis</span>
-                                <span class="tag">Sept. 2025 - Mar. 2026</span>
-                            </div>
+                    <!-- Master Thesis -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="thesis" data-project-title="Neuromuscular Adaptation to Exoskeleton Assistance" data-project-date="Sept. 2025 - Mar. 2026">
+                        <div class="project-header">
+                            <h3 class="project-title">Neuromuscular Adaptation to Exoskeleton Assistance</h3>
+                            <p class="project-date">Sept. 2025 - Mar. 2026</p>
+                        </div>
+                        <p class="project-description">Multi-modal analysis of how users adapt to robotic exoskeleton assistance.</p>
+                        <div class="project-tags">
+                            <span class="tag">Master Thesis</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Development of a rehabilitation game and instrumented soles</h3>
-                            <div class="project-tags">
-                                <span class="tag">Internship</span>
-                                <span class="tag">Jul. 2024 - Jan. 2025</span>
-                            </div>
+                    <!-- Internship: Autonomyo -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="autonomyo" data-project-title="Rehabilitation Game & Instrumented Soles" data-project-date="Jul. 2024 - Jan. 2025" data-report="Designed and prototyped custom PCB boards using KiCad for sensor integration into instrumented soles. Programmed STM32 microcontrollers for real-time motion capture and data processing. Developed a comprehensive Unity-based rehabilitation game that provides real-time biofeedback to users, transforming sensor data into interactive gameplay mechanics for enhanced patient engagement during recovery sessions.">
+                        <div class="project-header">
+                            <h3 class="project-title">Rehabilitation Game & Instrumented Soles</h3>
+                            <p class="project-date">Jul. 2024 - Jan. 2025</p>
+                        </div>
+                        <p class="project-description">Developed instrumented soles and a Unity-based rehabilitation game providing real-time sensor feedback.</p>
+                        <div class="project-tags">
+                            <span class="tag">Embedded Programming (ESP32/ESP-IDF)</span>
+                            <span class="tag">PCB Design (KiCad)</span>
+                            <span class="tag">CAD</span>
+                            <span class="tag">Unity</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Robotic Competition</h3>
-                            <div class="project-tags">
-                                <span class="tag">Semester Project</span>
-                                <span class="tag">Feb. 2025 - Jul. 2025</span>
-                            </div>
+                    <!-- Robot Competition -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="robot-competition" data-project-title="Autonomous Duplo-Collector Robot" data-project-date="Feb. 2025 - Today" data-report="Engineered an autonomous robot within a 1500 CHF budget to navigate and collect building blocks in an 8x8 meter arena with complex terrains including slopes and obstacles. Implemented advanced perception algorithms for block detection and localization. Developed robust motion planning strategies to optimize collection efficiency while managing hardware constraints and real-world environmental challenges.">
+                        <div class="project-header">
+                            <h3 class="project-title">Autonomous Duplo-Collector Robot</h3>
+                            <p class="project-date">Feb. 2025 - Today</p>
+                        </div>
+                        <p class="project-description">Building an autonomous robot to detect and deliver bricks in an 8x8m arena with complex terrains.</p>
+                        <div class="project-tags">
+                            <span class="tag">Mechanical Design</span>
+                            <span class="tag">Software Development</span>
+                            <span class="tag">Project Management</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">VR for Rehabilitation using LegoPress</h3>
-                            <div class="project-tags">
-                                <span class="tag">Semester Project</span>
-                                <span class="tag">Feb. 2024 - Jun. 2024</span>
-                            </div>
+                    <!-- Crazyfly Project -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="crazyfly" data-project-title="Vision-based Drone Control (Crazyfly)" data-project-date="Mar. 2025 - Today" data-report="Implemented computer vision algorithms for real-time gate detection and tracking. Developed cascaded PID control systems for precise drone stabilization and trajectory following. Validated control strategies using Webots simulation environment before deploying on physical quadrotor, achieving reliable autonomous navigation through complex gate sequences.">
+                        <div class="project-header">
+                            <h3 class="project-title">Vision-based Drone Control (Crazyfly)</h3>
+                            <p class="project-date">Mar. 2025 - Today</p>
+                        </div>
+                        <p class="project-description">Programming a quadrotor to navigate through gates using CV and cascaded PID controllers.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Control Systems</span>
+                            <span class="tag">Simulation (Webots)</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">CrazyFly Project</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Mar. 2025 - Jun. 2025</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
+                    <!-- Locomotion in Zebrafish -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="zebrafish" data-project-title="Locomotion in Zebrafish" data-project-date="Mar. 2025 - Today" data-report="Modeled neural control mechanisms underlying undulatory swimming locomotion in zebrafish larvae. Implemented Central Pattern Generator (CPG) control systems to simulate realistic fish-like movements. Applied biomechanical principles to understand efficiency and adaptability of aquatic locomotion, bridging neuroscience and robotics for bio-inspired robot design.">
+                        <div class="project-header">
                             <h3 class="project-title">Locomotion in Zebrafish</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Mar. 2025 - Jul. 2025</span>
-                            </div>
+                            <p class="project-date">Mar. 2025 - Today</p>
+                        </div>
+                        <p class="project-description">Modeling neural control and undulatory movements for efficient aquatic locomotion.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computational Modeling</span>
+                            <span class="tag">CPG Control Systems</span>
+                            <span class="tag">Biomechanics</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
+                    <!-- Virtual Environment for Rehabilitation -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="legov" data-project-title="Virtual Environment for Rehabilitation (LegoPress & FES)" data-project-date="Feb. 2024 - Jun. 2024" data-report="Developed a gamified VR environment targeting stroke rehabilitation using Unity. Implemented UDP socket communication for real-time data transmission between the game and external hardware controllers. Integrated Functional Electrical Stimulation (FES) systems to provide stimulation cues synchronized with gameplay, creating an immersive therapeutic experience that combines virtual engagement with neurorehabilitation principles.">
+                        <div class="project-header">
+                            <h3 class="project-title">Virtual Environment for Rehabilitation (LegoPress & FES)</h3>
+                            <p class="project-date">Feb. 2024 - Jun. 2024</p>
+                        </div>
+                        <p class="project-description">Created a gamified VR environment for stroke patients using Functional Electrical Stimulation.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">UDP Network Communication</span>
+                            <span class="tag">Sensor Integration</span>
+                        </div>
+                    </article>
+
+                    <!-- Motion-based Olfactory Algorithm -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="olfactory" data-project-title="Motion-based Olfactory Algorithm" data-project-date="Mar. 2024 - May. 2024" data-report="Adapted olfactory navigation strategies inspired by Drosophila (fruit fly) nervous system for robotic applications. Implemented the HRC (head-direction cell) computational model to simulate chemotaxis behavior. Validated the algorithm through simulations for autonomous odor-source localization, demonstrating how bio-inspired approaches can enhance robotic navigation capabilities in challenging environments.">
+                        <div class="project-header">
                             <h3 class="project-title">Motion-based Olfactory Algorithm</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Mar. 2024 - May. 2024</span>
-                            </div>
+                            <p class="project-date">Mar. 2024 - May. 2024</p>
+                        </div>
+                        <p class="project-description">Adapted Drosophila-inspired olfactory navigation for robotic odor-source localization.</p>
+                        <div class="project-tags">
+                            <span class="tag">Simulation Analysis</span>
+                            <span class="tag">Neuroscience Research (HRC model)</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
+                    <!-- Rocket Drone MPC -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="rocket-mpc" data-project-title="Rocket Drone MPC Controller Design" data-project-date="Oct. 2023 - Jan. 2024" data-report="Designed stabilizing regulators for a rocket-shaped drone using both linear and nonlinear Model Predictive Control (NMPC) strategies. Developed controllers to track Thrust Vector Control (TVC) trajectories with precise attitude regulation. Compared linear vs. nonlinear MPC approaches to optimize computational efficiency while maintaining robust performance for complex aerial maneuvers.">
+                        <div class="project-header">
                             <h3 class="project-title">Rocket Drone MPC Controller Design</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Oct. 2023 - Jan. 2024</span>
-                            </div>
+                            <p class="project-date">Oct. 2023 - Jan. 2024</p>
+                        </div>
+                        <p class="project-description">Developed stabilizing NMPC regulators for a rocket-shaped drone following TVC trajectories.</p>
+                        <div class="project-tags">
+                            <span class="tag">Linear/Nonlinear MPC</span>
+                            <span class="tag">Multivariable Control</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
+                    <!-- Autonomous Navigation -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="auto-nav" data-project-title="Autonomous Navigation for a Wheeled Robot" data-project-date="Sep. 2023 - Dec. 2023" data-report="Implemented autonomous navigation system combining path planning and state estimation. Deployed A* algorithm for optimal obstacle avoidance in 2D grid environments. Integrated Kalman Filtering for robust state estimation combining sensor data. Applied computer vision for environment perception, achieving reliable autonomous navigation in complex settings.">
+                        <div class="project-header">
                             <h3 class="project-title">Autonomous Navigation for a Wheeled Robot</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Sep. 2023 - Dec. 2023</span>
-                            </div>
+                            <p class="project-date">Sep. 2023 - Dec. 2023</p>
+                        </div>
+                        <p class="project-description">Achieved autonomous obstacle avoidance and state estimation in a 2D grid environment.</p>
+                        <div class="project-tags">
+                            <span class="tag">A* Algorithm</span>
+                            <span class="tag">Kalman Filter</span>
+                            <span class="tag">Computer Vision</span>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-image" aria-hidden="true"></div>
-                        <div class="project-content">
+                    <!-- Gait Phase Detection -->
+                    <article class="project-card" role="button" tabindex="0" data-project-id="gait-phase" data-project-title="Gait Phase Detection for Assisted Walking" data-project-date="Feb. 2023 - Jul. 2023" data-report="Analyzed spinal cord injury (SCI) patient biomechanics using advanced signal processing techniques. Applied Principal Component Analysis (PCA) across 15 biomechanical parameters to identify gait phase patterns. Processed electromyography (EMG) signals to quantify neuromuscular responses. Evaluated effects of Epidural Electrical Stimulation (EES) on gait rehabilitation using OpenSim and Scone simulation frameworks for comprehensive neurorehabilitation assessment.">
+                        <div class="project-header">
                             <h3 class="project-title">Gait Phase Detection for Assisted Walking</h3>
-                            <div class="project-tags">
-                                <span class="tag">Course Project</span>
-                                <span class="tag">Feb. 2023 - Jul. 2023</span>
-                            </div>
+                            <p class="project-date">Feb. 2023 - Jul. 2023</p>
+                        </div>
+                        <p class="project-description">Analyzed SCI patient biomechanics and the effects of Epidural Electrical Stimulation (EES) on gait.</p>
+                        <div class="project-tags">
+                            <span class="tag">PCA</span>
+                            <span class="tag">Electromyography (EMG)</span>
+                            <span class="tag">OpenSim/Scone</span>
                         </div>
                     </article>
                 </div>
@@ -204,24 +267,79 @@
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">
-                <h2 class="section-title">Connections</h2>
+                <h2 class="section-title">Contact</h2>
                 
                 <p class="footer-text">
-                    Connect with me on LinkedIn.
+                    Get in touch with me through these channels:
                 </p>
                 
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/sam-rahnemayan/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                        <span>LinkedIn</span>
-                    </a>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <a href="mailto:sam.rahnemayan@alumni.epfl.ch">sam.rahnemayan@alumni.epfl.ch</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/sam-rahnemayan/" target="_blank" rel="noopener noreferrer">linkedin.com/in/sam-rahnemayan</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>Switzerland</p>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Portfolio. All rights reserved.</p>
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2026 LeMonsieurPompidou. All rights reserved.</p>
+                    <a href="https://github.com/LeMonsieurPompidou/portfolio" target="_blank" rel="noopener noreferrer" class="github-link">View Source on GitHub</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            
+            <div class="modal-content">
+                <div class="modal-gallery">
+                    <img id="modal-image" src="" alt="Project" class="modal-image">
+                </div>
+                
+                <div class="modal-header">
+                    <h2 id="modal-title" class="modal-title"></h2>
+                    <p id="modal-date" class="modal-date"></p>
+                </div>
+                
+                <div class="modal-body">
+                    <section class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p id="modal-description"></p>
+                    </section>
+                    
+                    <section class="modal-section">
+                        <h3>Project Details</h3>
+                        <p id="modal-report"></p>
+                    </section>
+                    
+                    <section class="modal-section">
+                        <h3>Tech Stack</h3>
+                        <div id="modal-tech-stack" class="tech-stack-list"></div>
+                    </section>
+                    
+                    <section class="modal-section modal-links-section">
+                        <h3>Resources</h3>
+                        <div id="modal-links" class="modal-links"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Script -->
     <script src="script.js"></script>

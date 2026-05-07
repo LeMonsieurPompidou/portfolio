@@ -16,8 +16,8 @@ The portfolio details several high-level robotics projects, including:
 * **Master Thesis**: Neuromuscular Adaptation to Exoskeleton Assistance.
 * **Control Systems**: Rocket Drone MPC Controller Design using linear and nonlinear (NMPC) strategies.
 * **Embedded Systems**: Instrumented soles development with ESP32 and STM32.
-* **Biomechanical Modeling**: Locomotion simulation in Zebrafish and Gait Phase Detection for SCI patients[cite: 1].
-* **Autonomous Navigation**: A* algorithm and Kalman Filter implementation for wheeled robots[cite: 1].
+* **Biomechanical Modeling**: Locomotion simulation in Zebrafish and Gait Phase Detection for SCI patients.
+* **Autonomous Navigation**: A* algorithm and Kalman Filter implementation for wheeled robots.
 
 ## 📂 Project Structure
 ```text

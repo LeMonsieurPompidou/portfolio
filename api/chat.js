@@ -1,129 +1,80 @@
-/**
- * Vercel Serverless Function: Portfolio AI Chat
- * Handles chat requests and forwards them to Google Gemini API
- */
-
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-export default async function handler(req, res) {
-    // 1. Configurer les headers CORS immédiatement
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-
-    // 2. Vérifier la clé API
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ error: 'La clé API GEMINI_API_KEY est manquante dans Vercel.' });
-    }
-
-    try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const { context, message } = req.body;
-        
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export default async function handler(req, res) {
-    // Enable CORS
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
     res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-    // Handle preflight requests
     if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
+        return res.status(200).end();
     }
 
-    // Only accept POST requests
     if (req.method !== 'POST') {
-        return res.status(405).json({
-            error: 'Method not allowed',
-            message: 'Only POST requests are supported'
-        });
+        return res.status(405).json({ error: 'Method not allowed' });
     }
 
     try {
-        // Validate API key is configured
         if (!process.env.GEMINI_API_KEY) {
-            console.error('GEMINI_API_KEY environment variable is not set');
-            return res.status(500).json({
-                error: 'Configuration error',
-                message: 'AI service is not properly configured'
-            });
+            console.error('Missing GEMINI_API_KEY');
+            return res.status(500).json({ error: 'API key not configured on Vercel' });
         }
 
-        // Extract context and message from request body
         const { context, message } = req.body;
-
-        if (!message || typeof message !== 'string') {
-            return res.status(400).json({
-                error: 'Invalid request',
-                message: 'Request body must include a "message" field'
-            });
+        if (!message) {
+            return res.status(400).json({ error: 'Message is required' });
         }
 
-        const userMessage = message.trim();
-        if (userMessage.length === 0) {
-            return res.status(400).json({
-                error: 'Invalid request',
-                message: 'Message cannot be empty'
-            });
-        }
-
-        // Initialize the Gemini model
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-        // Build the full prompt with system context
-        let fullPrompt = userMessage;
-        if (context && typeof context === 'string' && context.trim().length > 0) {
-            fullPrompt = `${context}\n\nUser question: ${userMessage}`;
-        }
+        const fullPrompt = context 
+            ? `${context}\n\nUser question: ${message}` 
+            : message;
 
-        // Call the Gemini API
+        console.info('Calling Google generative API with prompt length:', fullPrompt.length);
         const result = await model.generateContent(fullPrompt);
-        const response = await result.response;
-        const text = response.text();
 
-        if (!text) {
-            return res.status(500).json({
-                error: 'Empty response',
-                message: 'AI returned an empty response'
-            });
+        // Inspect result and try to extract text safely
+        let text = '';
+        try {
+            const response = await result.response;
+            if (response && typeof response.text === 'function') {
+                text = await response.text();
+            } else if (result && typeof result.toString === 'function') {
+                text = result.toString();
+            } else {
+                text = JSON.stringify(result);
+            }
+        } catch (ex) {
+            console.warn('Could not extract text from result object, falling back to JSON', ex);
+            try { text = JSON.stringify(result); } catch (e) { text = String(result); }
         }
 
-        // Return the reply as JSON
-        return res.status(200).json({
-            reply: text,
-            timestamp: new Date().toISOString()
-        });
+        return res.status(200).json({ reply: text });
+
     } catch (error) {
-        console.error('Chat API error:', error.message);
+        console.error('Chat API Error full:', error);
 
-        // Handle specific error types
-        if (error.message && error.message.includes('API key')) {
-            return res.status(401).json({
-                error: 'Authentication failed',
-                message: 'Invalid or expired API key'
+        if (error && error.response) {
+            try {
+                const resp = error.response;
+                const body = typeof resp.text === 'function' ? await resp.text() : JSON.stringify(resp);
+                console.error('Google API response body:', body);
+            } catch (readErr) {
+                console.error('Failed to read error response body:', readErr);
+            }
+        }
+
+        const msg = error && error.message ? error.message : '';
+        if (msg.includes('403') || msg.toLowerCase().includes('permission')) {
+            return res.status(403).json({ 
+                error: 'Google API Forbidden', 
+                message: 'Check if your API key is restricted or if your region is supported.' 
             });
         }
 
-        if (error.message && error.message.includes('quota')) {
-            return res.status(429).json({
-                error: 'Rate limit exceeded',
-                message: 'API quota exceeded, please try again later'
-            });
-        }
-
-        // Generic error response
-        return res.status(500).json({
-            error: 'Internal server error',
-            message: 'An error occurred while processing your request'
-        });
+        return res.status(500).json({ error: 'Internal server error', details: msg });
     }
 }

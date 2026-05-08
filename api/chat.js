@@ -5,7 +5,27 @@
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+export default async function handler(req, res) {
+    // 1. Configurer les headers CORS immédiatement
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    // 2. Vérifier la clé API
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+        return res.status(500).json({ error: 'La clé API GEMINI_API_KEY est manquante dans Vercel.' });
+    }
+
+    try {
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const { context, message } = req.body;
+        
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
 export default async function handler(req, res) {
     // Enable CORS

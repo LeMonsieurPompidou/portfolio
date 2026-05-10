@@ -70,16 +70,28 @@ Formatting rules:
 // Keep only 'report' content as a fallback. Title/date/description/tags
 // should be provided in the DOM within each `.project-card`.
 const projectData = {
-    thesis: { report: 'This master thesis investigates the complex mechanisms of neuromuscular adaptation when humans interact with robotic exoskeleton systems. Through multi-modal data acquisition and advanced signal processing, we analyze how the nervous system modulates muscle activation patterns in response to assistive forces. The research combines biomechanical modeling with electromyographic analysis to quantify adaptation dynamics.' },
-    autonomyo: { report: 'Developed an integrated hardware-software solution for rehabilitation. Custom PCB design in KiCad enabled seamless sensor integration with miniaturized form factor. STM32 firmware handled real-time sensor data processing and wireless transmission. The Unity application provides gamified rehabilitation exercises with real-time biofeedback, significantly improving patient motivation and compliance during recovery.' },
-    'robot-competition': { report: 'Built a cost-effective autonomous system with stringent budget constraints (1500 CHF). The robot navigates an 8x8m arena with varied terrain, utilizing computer vision for block detection and sophisticated path planning algorithms for optimal collection strategies. Real-time control systems manage wheel odometry and sensor fusion for accurate self-localization.' },
-    crazyfly: { report: 'Designed vision-based autonomous flight controller for gate navigation. Computer vision pipeline processes live camera feed for gate detection. Cascaded control architecture ensures stable altitude and attitude control while following waypoints. Webots simulation provided safe validation environment before real-world deployment.' },
-    zebrafish: { report: 'Bio-inspired computational modeling of zebrafish swimming. Central Pattern Generator networks simulate spinal neural circuits controlling locomotion. Biomechanical analysis reveals energy efficiency of undulatory motion. Insights applied to robotic system design for aquatic environments.' },
-    legov: { report: 'Created VR-based rehabilitation platform for stroke patients. UDP network architecture enables real-time communication with FES hardware. Gamification elements enhance patient engagement while FES provides muscle stimulation synchronized with game events. The system seamlessly integrates virtual environment feedback with physiological stimulation.' },
-    olfactory: { report: 'Bio-inspired navigation algorithm based on Drosophila olfactory system. Head-direction cell (HRC) model implementation enables robust odor gradient following. Computational validation demonstrates effective source localization. Algorithm applicable to search-and-rescue robotics.' },
-    'rocket-mpc': { report: 'Comprehensive control system design for rocket-shaped aerial platform. Linear MPC provides baseline controller, while NMPC offers improved tracking performance. Both approaches handle Thrust Vector Control constraints. Comparative analysis balances computational cost against performance requirements.' },
-    'auto-nav': { report: 'Complete autonomous navigation stack for wheeled platform. A* algorithm plans collision-free paths in grid-based environments. Kalman Filter fuses odometry and vision data for robust state estimation. Computer vision detects and localizes obstacles in real-time.' },
-    'gait-phase': { report: 'Advanced biomechanical analysis of assisted gait in SCI patients. PCA dimensionality reduction across 15 parameters reveals gait phase signatures. EMG processing quantifies neuromuscular adaptation to EES. OpenSim/Scone simulations predict therapeutic outcomes.' }
+    thesis: {
+        report: `The research focused on quantifying the neuromuscular and kinematic adaptation strategies induced by a commercial upper-limb exoskeleton (ArmeoPower) through a multi-modal analysis. By integrating 8-channel surface electromyography (EMG) and external Vicon optical motion capture, the study reconstructed the internal motor control strategies that standard clinical "black box" robotic logs cannot reveal.
+
+The experimental protocol isolated key interaction variables through diagonal reaching tasks, one-dimensional tracking games, and continuous circular movements, systematically varying parameters such as weight support levels and algorithmic guidance intensity. Data processing involved extensive kinematic cross-validation against gold-standard systems and the extraction of time-domain EMG features, supplemented by higher-level computational analyses including muscle synergy decomposition via Non-Negative Matrix Factorization (NNMF) and agonist-antagonist state-space coordination.
+
+Ultimately, this multi-modal pipeline identified critical bio-robotic co-adaptation mechanisms, such as the redistribution of proximal-distal effort and the regularization of biological noise into stable attractors, establishing a scalable computational framework for distinguishing healthy motor learning from maladaptive compensation in clinical stroke rehabilitation.`
+    },
+    autonomyo: {
+        report: `The project involved the end-to-end development of a wireless gait monitoring and rehabilitation system during an internship at Autonomyo, a startup emerging from the EPFL RehAssist lab. The primary objective was to design instrumented soles capable of real-time pressure mapping and integrate them into an interactive Unity-based game environment to facilitate physical therapy. This required an approach combining mechanical design, electronics, and software engineering to transform medical requirements into a functional, wearable prototype.
+
+On the hardware front, each sole was equipped with eight load cells integrated via a custom flexible PCB to ensure durability and signal integrity during gait. I worked with the "FootBoard"—the rigid PCB acting as the system's control center—utilizing KiCad to analyze and understand its electronic design and sensor-interfacing logic. My central hardware responsibility was developing a prototype to integrate wireless capabilities into the system. I implemented a robust Bluetooth Low Energy (BLE) communication pipeline on ESP32 modules using the ESP-IDF framework, successfully establishing the real-time data link required for seamless interaction between the wearable hardware and the software environment.
+
+The software layer featured a Unity game that processed raw sensor data to provide immediate visual biofeedback, allowing clinicians and patients to monitor gait patterns and pressure distribution dynamically. This integration bridged the gap between low-level embedded programming and high-level user interface design, resulting in a scalable platform for advanced gait analysis and tele-rehabilitation applications.`
+    },
+    'robot-competition': { report: 'Coming Soon.' },
+    crazyfly: { report: 'Coming Soon.' },
+    zebrafish: { report: 'Coming Soon.' },
+    legov: { report: 'Coming Soon.' },
+    olfactory: { report: 'Coming Soon.' },
+    'rocket-mpc': { report: 'Coming Soon.' },
+    'auto-nav': { report: 'Coming Soon.' },
+    'gait-phase': { report: 'Coming Soon.' }
 };
 
 // =============================================
@@ -452,6 +464,11 @@ function openModal(projectCardOrId) {
         .map(img => img.trim())
         .filter(Boolean);
 
+    const videos = videoUrl
+        .split(',')
+        .map(video => video.trim())
+        .filter(Boolean);
+
     // Populate modal content
     document.getElementById('modal-title').textContent = title;
     document.getElementById('modal-date').textContent = date;
@@ -469,40 +486,116 @@ function openModal(projectCardOrId) {
     if (galleryContainer) {
         galleryContainer.innerHTML = '';
 
-        // Add video if present
-        if (videoUrl) {
+        const createMediaSection = (sectionTitle, items, renderItem) => {
+            if (items.length === 0) {
+                return;
+            }
+
+            const section = document.createElement('section');
+            section.className = 'modal-gallery-section';
+
+            const heading = document.createElement('h3');
+            heading.className = 'modal-gallery-title';
+            heading.textContent = sectionTitle;
+
+            const row = document.createElement('div');
+            row.className = 'modal-gallery-row';
+
+            items.forEach((item) => {
+                row.appendChild(renderItem(item));
+            });
+
+            section.appendChild(heading);
+            section.appendChild(row);
+            galleryContainer.appendChild(section);
+        };
+
+        const createImageItem = (imgUrl) => {
+            const figure = document.createElement('figure');
+            figure.className = 'modal-gallery-item modal-gallery-item--image';
+
+            const imageTitle = imgUrl
+                .split('/')
+                .pop()
+                ?.replace(/\.[^.]+$/, '')
+                .replace(/[_-]+/g, ' ')
+                .trim() || title;
+
+            const link = document.createElement('a');
+            link.href = imgUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.className = 'modal-gallery-link';
+
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            img.alt = imageTitle;
+            img.loading = 'lazy';
+
+            const caption = document.createElement('figcaption');
+            caption.className = 'modal-gallery-caption';
+            caption.textContent = imageTitle;
+
+            link.appendChild(img);
+            figure.appendChild(link);
+            figure.appendChild(caption);
+            return figure;
+        };
+
+        const createVideoItem = (videoUrlItem) => {
+            const figure = document.createElement('figure');
+            figure.className = 'modal-gallery-item modal-gallery-item--video';
+
+            const isYoutubeUrl = /(?:youtube\.com|youtu\.be)/i.test(videoUrlItem);
+
+            if (isYoutubeUrl) {
+                const embedUrl = videoUrlItem.includes('youtu.be')
+                    ? `https://www.youtube.com/embed/${videoUrlItem.split('/').pop()?.split('?')[0]}`
+                    : videoUrlItem.replace('watch?v=', 'embed/').replace('&feature=share', '');
+
+                const iframe = document.createElement('iframe');
+                iframe.src = embedUrl;
+                iframe.title = `${title} video`;
+                iframe.loading = 'lazy';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+
+                figure.appendChild(iframe);
+                return figure;
+            }
+
             const video = document.createElement('video');
             video.setAttribute('controls', '');
-            video.setAttribute('width', '100%');
-            video.style.marginBottom = '1rem';
+            video.setAttribute('playsinline', '');
+
             const source = document.createElement('source');
-            source.src = videoUrl;
+            source.src = videoUrlItem;
             source.type = 'video/mp4';
             video.appendChild(source);
-            galleryContainer.appendChild(video);
-        }
 
-        // Add images if present
-        if (images.length > 0) {
-            images.forEach(imgUrl => {
-                const img = document.createElement('img');
-                img.src = imgUrl;
-                img.alt = title;
-                img.style.maxWidth = '100%';
-                img.style.height = 'auto';
-                img.style.marginBottom = '1rem';
-                galleryContainer.appendChild(img);
-            });
-        }
+            figure.appendChild(video);
+            return figure;
+        };
+
+        createMediaSection('Videos', videos, createVideoItem);
+        createMediaSection('Pictures', images, createImageItem);
 
         // Fallback: if no images/video, show placeholder
-        if (!videoUrl && images.length === 0) {
-            const placeholder = document.createElement('img');
-            placeholder.src = `https://via.placeholder.com/800x300?text=${encodeURIComponent(title || projectId)}`;
-            placeholder.alt = `${title} placeholder`;
-            placeholder.style.maxWidth = '100%';
-            placeholder.style.height = 'auto';
-            galleryContainer.appendChild(placeholder);
+        if (videos.length === 0 && images.length === 0) {
+            const section = document.createElement('section');
+            section.className = 'modal-gallery-section';
+
+            const heading = document.createElement('h3');
+            heading.className = 'modal-gallery-title';
+            heading.textContent = 'Media';
+
+            const placeholder = document.createElement('div');
+            placeholder.className = 'modal-gallery-empty';
+            placeholder.textContent = 'No media available.';
+
+            section.appendChild(heading);
+            section.appendChild(placeholder);
+            galleryContainer.appendChild(section);
         }
     }
 
@@ -525,7 +618,7 @@ function openModal(projectCardOrId) {
 
         linksContainer.innerHTML = linkButtons.length > 0 
             ? linkButtons.join('')
-            : '<p>Coming soon</p>';
+            : '<p>Additional resources can be shared upon request.</p>';
     }
 
     // Show modal

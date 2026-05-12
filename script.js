@@ -475,6 +475,20 @@ function openModal(projectCardOrId) {
     document.getElementById('modal-description').textContent = description;
     document.getElementById('modal-report').textContent = report;
 
+    // Populate collaboration/context if provided on the project card
+    const collaborationText = projectCard.dataset.collaboration || '';
+    const collaborationEl = document.getElementById('modal-collaboration');
+    if (collaborationEl) {
+        const sectionEl = collaborationEl.parentElement;
+        if (collaborationText && collaborationText.trim()) {
+            collaborationEl.textContent = collaborationText.trim();
+            if (sectionEl) sectionEl.style.display = '';
+        } else {
+            collaborationEl.textContent = '';
+            if (sectionEl) sectionEl.style.display = 'none';
+        }
+    }
+
     // Populate tech stack from tags
     const techStackContainer = document.getElementById('modal-tech-stack');
     techStackContainer.innerHTML = tags

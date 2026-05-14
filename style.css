@@ -66,6 +66,24 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    position: relative;
+    z-index: 1;
+}
+
+button,
+a,
+.project-card,
+.cta-button,
+.nav-link,
+.logo a,
+.github-link,
+.contact-item a {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* =============================================
    CONTAINER & LAYOUT
    ============================================= */
@@ -1092,6 +1110,7 @@ main {
     flex-direction: column;
     align-items: flex-end;
     gap: var(--spacing-sm);
+    pointer-events: none;
 }
 
 .chatbot-toggle {
@@ -1107,6 +1126,7 @@ main {
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
     touch-action: manipulation;
+    pointer-events: auto;
 }
 
 @media (hover: hover) {
@@ -1504,10 +1524,12 @@ main {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
+        pointer-events: none;
     }
 
     .nav.active {
         max-height: 400px;
+        pointer-events: auto;
     }
 
     .nav-list {

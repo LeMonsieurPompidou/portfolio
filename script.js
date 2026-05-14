@@ -109,6 +109,7 @@ function closeMenu() {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
 }
 
 // =============================================
@@ -650,7 +651,7 @@ function openModal(projectCardOrId) {
 
 function closeModal() {
     projectModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
 }
 
 // Close modal on overlay click

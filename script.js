@@ -84,9 +84,25 @@ On the hardware front, each sole was equipped with eight load cells integrated v
 
 The software layer featured a Unity game that processed raw sensor data to provide immediate visual biofeedback, allowing clinicians and patients to monitor gait patterns and pressure distribution dynamically. This integration bridged the gap between low-level embedded programming and high-level user interface design, resulting in a scalable platform for advanced gait analysis and tele-rehabilitation applications.`
     },
-    'robot-competition': { report: 'Coming Soon.' },
-    crazyfly: { report: 'Coming Soon.' },
-    zebrafish: { report: 'Coming Soon.' },
+    'robot-competition': {
+        report: `Developed as part of the EPFL Interdisciplinary Robot Competition, this project involved the creation of "Duplo-Dockus," an autonomous mobile robot designed to navigate a challenging 8x8m arena to collect and deliver Duplo-like bricks. The project was a collaborative effort among a team of three Master’s students, requiring seamless integration between mechanical hardware, custom electronics, and autonomous control algorithms. The primary engineering challenge was to design a system capable of operating within a strict 1500 CHF virtual budget while meeting complex performance requirements, such as navigating ramps and obstacles within a 10-minute competition window.
+
+My principal responsibility focused on the physical realization of the robot, encompassing the complete CAD design and the manufacturing of structural components. I utilized a combination of rapid prototyping and precision manufacturing techniques, including 3D printing (PLA) for intricate mechanical parts and laser cutting (MDF and acrylic) for the main chassis and storage compartments. The mechanical architecture featured a differential drive locomotion system and a specialized collection mechanism designed to efficiently intake bricks from the arena floor.
+
+I worked closely with my teammates to ensure the physical frame could accommodate the custom sensor hub and electronics suite—which handled real-time data from various sensors—and support the high-level path planning and localization algorithms required for autonomous mission execution. This multidisciplinary approach resulted in a robust platform capable of precision movement and reliable block manipulation in a semi-structured environment.`
+    },
+    crazyfly: {
+        report: `The "Vision-based Drone Control" project focused on the autonomous navigation of a Crazyflie quadrotor through a complex course of gates, transitioning from a simulated environment to physical hardware deployment. The primary objective was to complete three laps of a circular arena as quickly as possible, requiring a robust integration of computer vision and real-time control systems.
+
+During the initial individual phase, I utilized the Webots simulator to develop a multi-stage autonomous flight pipeline. This involved implementing a computer vision system—leveraging OpenCV—to detect and localize five square gates with unknown coordinates during an exploratory first lap. For the subsequent high-speed laps, I optimized a cascaded PID controller to execute precise trajectories through the gates once their positions were established.
+
+In the second phase, I worked within a group of four students to transfer these algorithms from the simulation to the real Crazyflie hardware. This "sim-to-real" transition presented significant challenges, specifically in managing noisy sensor data and the reduced accuracy of physical hardware compared to the simulator. We utilized the Lighthouse positioning system for state estimation and fine-tuned our control strategies to handle real-world flight dynamics. This project emphasized the importance of scientific performance reporting and the practical constraints of deploying code on real-time embedded systems.` },
+    zebrafish: {
+        report: `This project, conducted as a collaborative effort by a team of three students, focused on the neuromechanical modeling and simulation of zebrafish locomotion within the "Computational Motor Control" framework. The objective was to bridge the gap between biological neural circuits and physical movement by developing a realistic simulation of the fish's interaction with a fluid environment.
+
+The first phase of the project centered on establishing a robust open-loop controller. We implemented a wave controller and optimized muscle activation parameters to generate efficient undulatory swimming patterns. This involved the design and tuning of a Central Pattern Generator (CPG) network, a system of distributed oscillators capable of producing rhythmic locomotor patterns without the need for sensory input.
+
+The second phase extended the architecture into a closed-loop system by integrating local proprioceptive feedback. We modeled how stretch signals along the body modulate neural activity, allowing the fish to adapt its swimming frequency and coordination in response to local mechanical perturbations. Through extensive simulation in the MuJoCo environment using Python, the team analyzed the relative contributions of central control and sensory feedback, ultimately identifying the minimum CPG connectivity and feedback strengths required to maintain stable and adaptable aquatic locomotion.` },
     legov: { report: 'Coming Soon.' },
     olfactory: { report: 'Coming Soon.' },
     'rocket-mpc': { report: 'Coming Soon.' },
@@ -533,16 +549,25 @@ function openModal(projectCardOrId) {
             galleryContainer.appendChild(section);
         };
 
+        // Convert a filename or URL into a readable, capitalized title
+        const filenameToTitle = (url) => {
+            const file = String(url || '').split('/').pop() || '';
+            const noExt = file.replace(/\.[^.]+$/, '');
+            const withSpaces = noExt.replace(/[_-]+/g, ' ');
+            const cleaned = withSpaces.replace(/\s+/g, ' ').trim();
+            if (!cleaned) return '';
+            return cleaned
+                .split(' ')
+                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(' ');
+        };
+
         const createImageItem = (imgUrl) => {
             const figure = document.createElement('figure');
             figure.className = 'modal-gallery-item modal-gallery-item--image';
 
-            const imageTitle = imgUrl
-                .split('/')
-                .pop()
-                ?.replace(/\.[^.]+$/, '')
-                .replace(/[_-]+/g, ' ')
-                .trim() || title;
+            let imageTitle = (filenameToTitle(imgUrl) || '').trim();
+            if (!imageTitle) imageTitle = (title || 'Media').trim();
 
             const link = document.createElement('a');
             link.href = imgUrl;
@@ -571,6 +596,9 @@ function openModal(projectCardOrId) {
 
             const isYoutubeUrl = /(?:youtube\.com|youtu\.be)/i.test(videoUrlItem);
 
+            let videoTitle = (filenameToTitle(videoUrlItem) || '').trim();
+            if (!videoTitle) videoTitle = (title || 'Media').trim();
+
             if (isYoutubeUrl) {
                 const embedUrl = videoUrlItem.includes('youtu.be')
                     ? `https://www.youtube.com/embed/${videoUrlItem.split('/').pop()?.split('?')[0]}`
@@ -578,12 +606,39 @@ function openModal(projectCardOrId) {
 
                 const iframe = document.createElement('iframe');
                 iframe.src = embedUrl;
-                iframe.title = `${title} video`;
+                iframe.title = `${videoTitle} video`;
                 iframe.loading = 'lazy';
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
                 iframe.allowFullscreen = true;
 
                 figure.appendChild(iframe);
+
+                const caption = document.createElement('figcaption');
+                caption.className = 'modal-gallery-caption';
+                // show a reasonable fallback first
+                caption.textContent = videoTitle;
+                figure.appendChild(caption);
+
+                // Try fetching the canonical video title via YouTube oEmbed
+                try {
+                    fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(videoUrlItem)}&format=json`)
+                        .then((res) => {
+                            if (!res.ok) throw new Error('oEmbed fetch failed');
+                            return res.json();
+                        })
+                        .then((data) => {
+                            if (data && data.title) {
+                                caption.textContent = String(data.title).trim();
+                                iframe.title = `${caption.textContent} video`;
+                            }
+                        })
+                        .catch(() => {
+                            // ignore, keep fallback
+                        });
+                } catch (e) {
+                    // ignore errors
+                }
+
                 return figure;
             }
 
@@ -597,13 +652,19 @@ function openModal(projectCardOrId) {
             video.appendChild(source);
 
             figure.appendChild(video);
+
+            const caption = document.createElement('figcaption');
+            caption.className = 'modal-gallery-caption';
+            caption.textContent = videoTitle;
+            figure.appendChild(caption);
+
             return figure;
         };
 
         createMediaSection('Videos', videos, createVideoItem);
         createMediaSection('Pictures', images, createImageItem);
 
-        // Fallback: if no images/video, show placeholder
+        // Fallback: if no images/video, show placeholder with project title
         if (videos.length === 0 && images.length === 0) {
             const section = document.createElement('section');
             section.className = 'modal-gallery-section';
@@ -616,8 +677,13 @@ function openModal(projectCardOrId) {
             placeholder.className = 'modal-gallery-empty';
             placeholder.textContent = 'No media available.';
 
+            const titleCaption = document.createElement('div');
+            titleCaption.className = 'modal-gallery-caption';
+            titleCaption.textContent = title || 'Media';
+
             section.appendChild(heading);
             section.appendChild(placeholder);
+            section.appendChild(titleCaption);
             galleryContainer.appendChild(section);
         }
     }

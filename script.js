@@ -92,7 +92,7 @@ My principal responsibility focused on the physical realization of the robot, en
 I worked closely with my teammates to ensure the physical frame could accommodate the custom sensor hub and electronics suite—which handled real-time data from various sensors—and support the high-level path planning and localization algorithms required for autonomous mission execution. This multidisciplinary approach resulted in a robust platform capable of precision movement and reliable block manipulation in a semi-structured environment.`
     },
     crazyfly: {
-        report: `The "Vision-based Drone Control" project focused on the autonomous navigation of a Crazyflie quadrotor through a complex course of gates, transitioning from a simulated environment to physical hardware deployment. The primary objective was to complete three laps of a circular arena as quickly as possible, requiring a robust integration of computer vision and real-time control systems.
+        report: `The Crazyfly project focused on the autonomous navigation of a Crazyflie quadrotor through a complex course of gates, transitioning from a simulated environment to physical hardware deployment. The primary objective was to complete three laps of a circular arena as quickly as possible, requiring a robust integration of computer vision and real-time control systems.
 
 During the initial individual phase, I utilized the Webots simulator to develop a multi-stage autonomous flight pipeline. This involved implementing a computer vision system—leveraging OpenCV—to detect and localize five square gates with unknown coordinates during an exploratory first lap. For the subsequent high-speed laps, I optimized a cascaded PID controller to execute precise trajectories through the gates once their positions were established.
 
@@ -103,8 +103,16 @@ In the second phase, I worked within a group of four students to transfer these 
 The first phase of the project centered on establishing a robust open-loop controller. We implemented a wave controller and optimized muscle activation parameters to generate efficient undulatory swimming patterns. This involved the design and tuning of a Central Pattern Generator (CPG) network, a system of distributed oscillators capable of producing rhythmic locomotor patterns without the need for sensory input.
 
 The second phase extended the architecture into a closed-loop system by integrating local proprioceptive feedback. We modeled how stretch signals along the body modulate neural activity, allowing the fish to adapt its swimming frequency and coordination in response to local mechanical perturbations. Through extensive simulation in the MuJoCo environment using Python, the team analyzed the relative contributions of central control and sensory feedback, ultimately identifying the minimum CPG connectivity and feedback strengths required to maintain stable and adaptable aquatic locomotion.` },
-    legov: { report: 'Coming Soon.' },
-    olfactory: { report: 'Coming Soon.' },
+    legov: {
+        report: `This semester project, conducted at the REHAssist lab at EPFL, focused on the development and integration of an interactive virtual reality environment designed for neurorehabilitation. The primary objective was to bridge the gap between physical therapeutic hardware and digital feedback systems by interfacing a virtual gaming environment with two key medical systems: the LegoPress, a seated lower-limb training and performance assessment device, and a Functional Electrical Stimulation (FES) system. This integrated setup was specifically designed to provide intuitive visual biofeedback for stroke survivors or individuals suffering from a loss of proprioceptive awareness.
+
+On the technical side, the project required establishing a robust, low-latency communication pipeline between the mechanical hardware and the software application. I worked on processing real-time kinematic and kinetic data collected via potentiometers and load cells embedded on the LegoPress device to accurately capture patient position and force exertion. This data was streamed into a custom graphical user interface (GUI) using a high-throughput User Datagram Protocol (UDP) socket communication framework. Within the Unity engine, I developed a versatile virtual environment featuring four distinct clinical training modes alongside two tailored gamification modules engineered to enhance user compliance and motivation during recovery sessions. To prioritize accessibility and patient inclusivity, the environment featured six selectable user avatars, three localized camera perspectives, and an embedded bilingual localization system supporting both English and Arabic.` },
+    olfactory: {
+        report: `Developed as part of the EPFL course Controlling Behavior in Animals and Robots, this project explored the implementation of a bio-inspired, motion-based olfactory navigation algorithm to guide an autonomous agent toward the source of a complex odor plume. Moving beyond traditional wind-guided navigation strategies, the research investigated how walking fruit flies (Drosophila melanogaster) utilize the spatiotemporal timing and motion direction of odor encounters—rather than ambient wind direction—to navigate turbulent environments. The core of the architecture relied on adopting a bilateral sensing approach modeled after a Hassenstein-Reichardt Correlator (HRC), a biological circuit typically studied in visual motion detection, to process concentration inputs from the agent's left and right antennae.
+
+On the algorithmic side, the work involved developing a closed-loop sensorimotor controller that determined the moving odor's relative direction by applying a discrete time delay and cross-correlation to simulated olfactory receptor neuron (ORN) intensity signals. If the HRC model detected a left-to-right or right-to-left odor motion, the controller dynamically modulated steering commands to turn the agent toward the oncoming plume. To resolve heading ambiguities occurring when the plume encountered the agent directly from the front or back—where the standard bilateral HRC output drops to zero—the framework was expanded by proposing a novel, secondary HRC configuration operating within a single antenna.
+
+The complete control pipeline was evaluated through multiple simulation experiences, identifying the distinct advantages of bilateral motion-correlating mechanisms in plume tracking alongside the inherent structural limitations of bio-inspired sensory architectures when facing complex, non-linear trajectories.` },
     'rocket-mpc': { report: 'Coming Soon.' },
     'auto-nav': { report: 'Coming Soon.' },
     'gait-phase': { report: 'Coming Soon.' }
@@ -549,17 +557,13 @@ function openModal(projectCardOrId) {
             galleryContainer.appendChild(section);
         };
 
-        // Convert a filename or URL into a readable, capitalized title
+        // Convert a filename or URL into a readable title (preserves original case)
         const filenameToTitle = (url) => {
             const file = String(url || '').split('/').pop() || '';
             const noExt = file.replace(/\.[^.]+$/, '');
             const withSpaces = noExt.replace(/[_-]+/g, ' ');
             const cleaned = withSpaces.replace(/\s+/g, ' ').trim();
-            if (!cleaned) return '';
-            return cleaned
-                .split(' ')
-                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(' ');
+            return cleaned;
         };
 
         const createImageItem = (imgUrl) => {

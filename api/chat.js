@@ -21,8 +21,6 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: 'API key not configured on Vercel' });
         }
 
-        const genAI = new GoogleGenerativeAI(apiKey);
-
         const { context, message } = req.body;
 
         if (!message) {
@@ -33,27 +31,28 @@ export default async function handler(req, res) {
             ? `${context}\n\nUser question: ${message}` 
             : message;
 
-        const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
-        const result = await model.generateContent(fullPrompt);
-        const response = await result.response;
-        const text = response.text();
+        try {
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
+            const result = await model.generateContent(fullPrompt);
+            const response = await result.response;
+            const text = response.text();
 
-        if (!text) {
-            throw new Error('Empty response from Google API');
+            if (!text) {
+                throw new Error('Empty response from Google API');
+            }
+
+            return res.status(200).json({ reply: text });
+
+        } catch (apiError) {
+            console.error('Gemini API Error:', apiError.message || apiError);
+            
+            const fallbackMessage = 'Désolé, ma connexion avec mes modules cérébraux a connu un léger timeout. Pouvez-vous reformuler votre question ?';
+            return res.status(200).json({ reply: fallbackMessage });
         }
-
-        return res.status(200).json({ reply: text });
 
     } catch (error) {
-        console.error('Chat API Error:', error.message);
-        
-        if (error.message.includes('403') || error.message.includes('permission')) {
-            return res.status(403).json({ 
-                error: 'Google API Forbidden', 
-                message: 'The model is not accessible with the provided API key. Please check your API key permissions and ensure it has access to the requested model.' 
-            });
-        }
-
+        console.error('Chat API Configuration Error:', error.message);
         return res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 }

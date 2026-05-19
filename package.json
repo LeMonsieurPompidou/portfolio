@@ -5,8 +5,8 @@
   "main": "script.js",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Static portfolio with serverless API'"
+    "dev": "vercel dev --listen 3000",
+    "build": "echo 'Static site + serverless API (no build step)'"
   },
   "keywords": [
     "robotics",

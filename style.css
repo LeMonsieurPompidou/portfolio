@@ -876,14 +876,22 @@ main {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
     margin-bottom: var(--spacing-xl);
 }
 
 .projects-grid--personal {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 340px));
-    justify-content: start;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+@media (min-width: 1024px) {
+    .projects-grid-2x2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .project-category-section {
@@ -942,6 +950,28 @@ main {
         repeating-linear-gradient(0deg, rgba(148, 163, 184, 0.09) 0 1px, transparent 1px 20px),
         repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.09) 0 1px, transparent 1px 20px),
         linear-gradient(160deg, #17253d, #0f172a);
+}
+
+.project-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    max-width: calc(100% - 24px);
+    padding: 6px 10px;
+    border: 1px solid rgba(226, 232, 240, 0.28);
+    border-radius: 999px;
+    background: rgba(8, 13, 24, 0.72);
+    color: #e5efff;
+    font-family: var(--font-family-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.28);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 .project-thumb--image {

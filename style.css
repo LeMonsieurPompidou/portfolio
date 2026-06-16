@@ -730,7 +730,8 @@ main {
     font-family: var(--font-family-mono);
     letter-spacing: 0.02em;
     transition: var(--transition);
-    cursor: default;
+    cursor: pointer;
+    user-select: none;
 }
 
 @media (hover: hover) {
@@ -739,6 +740,13 @@ main {
         border-color: #60a5fa;
         transform: translateY(-1px);
     }
+}
+
+.skill-tag.active-skill-filter {
+    background-color: rgba(96, 165, 250, 0.22);
+    border-color: rgba(147, 197, 253, 0.9);
+    color: #eff6ff;
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.22), 0 8px 18px rgba(37, 99, 235, 0.18);
 }
 
 
@@ -938,6 +946,22 @@ main {
         border-left-color: var(--border-color);
         background: var(--background-color);
     }
+}
+
+.project-card.dimmed {
+    opacity: 0.2;
+    transform: scale(0.985);
+    filter: saturate(0.55);
+}
+
+.project-card.active-filter {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+    border-color: rgba(125, 211, 252, 0.95);
+    box-shadow:
+        0 0 0 1px rgba(125, 211, 252, 0.35),
+        0 18px 42px rgba(14, 165, 233, 0.22),
+        var(--shadow-lg);
 }
 
 .project-thumb {

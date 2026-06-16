@@ -14,6 +14,7 @@ const projectModal = document.getElementById('project-modal');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modalClose = document.querySelector('.modal-close');
 const projectCards = document.querySelectorAll('.project-card');
+const skillTags = document.querySelectorAll('.skill-tag');
 const chatbotToggle = document.getElementById('chatbot-toggle');
 const chatbotClose = document.getElementById('chatbot-close');
 const chatbotPanel = document.getElementById('chatbot-panel');
@@ -516,6 +517,71 @@ hamburger.addEventListener('click', toggleMenu);
 chatbotToggle.addEventListener('click', toggleChatWindow);
 chatbotClose.addEventListener('click', closeChatWindow);
 chatbotForm.addEventListener('submit', sendMessage);
+
+// =============================================
+// SKILL-TO-PROJECT FILTERING
+// =============================================
+
+let activeSkillFilter = '';
+
+function getMatchedProjectIds(skillTag) {
+    return (skillTag.dataset.projectMatch || '')
+        .split(',')
+        .map(projectId => projectId.trim())
+        .filter(Boolean);
+}
+
+function clearProjectSkillFilter() {
+    activeSkillFilter = '';
+    skillTags.forEach(skillTag => {
+        skillTag.classList.remove('active-skill-filter');
+        skillTag.setAttribute('aria-pressed', 'false');
+    });
+    projectCards.forEach(card => {
+        card.classList.remove('active-filter', 'dimmed');
+    });
+}
+
+function applyProjectSkillFilter(selectedSkillTag) {
+    const skillKey = selectedSkillTag.textContent.trim();
+    const matchedProjectIds = getMatchedProjectIds(selectedSkillTag);
+
+    if (activeSkillFilter === skillKey) {
+        clearProjectSkillFilter();
+        return;
+    }
+
+    activeSkillFilter = skillKey;
+
+    skillTags.forEach(skillTag => {
+        const isActive = skillTag === selectedSkillTag;
+        skillTag.classList.toggle('active-skill-filter', isActive);
+        skillTag.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    projectCards.forEach(card => {
+        const isMatch = matchedProjectIds.includes(card.dataset.projectId);
+        card.classList.toggle('active-filter', isMatch);
+        card.classList.toggle('dimmed', !isMatch);
+    });
+}
+
+skillTags.forEach(skillTag => {
+    skillTag.setAttribute('role', 'button');
+    skillTag.setAttribute('tabindex', '0');
+    skillTag.setAttribute('aria-pressed', 'false');
+
+    skillTag.addEventListener('click', () => {
+        applyProjectSkillFilter(skillTag);
+    });
+
+    skillTag.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            applyProjectSkillFilter(skillTag);
+        }
+    });
+});
 
 // =============================================
 // SMOOTH SCROLLING FOR NAVIGATION LINKS

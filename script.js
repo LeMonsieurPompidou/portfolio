@@ -542,13 +542,33 @@ function clearProjectSkillFilter() {
     });
 }
 
+function scrollToSkillsSection() {
+    const skillsSection = document.getElementById('skills');
+    if (!skillsSection) return;
+
+    skillsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+function scrollToFirstActiveProject() {
+    const firstActiveProject = document.querySelector('.project-card.active-filter');
+    if (!firstActiveProject) return;
+
+    firstActiveProject.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
 function applyProjectSkillFilter(selectedSkillTag) {
     const skillKey = selectedSkillTag.textContent.trim();
     const matchedProjectIds = getMatchedProjectIds(selectedSkillTag);
 
     if (activeSkillFilter === skillKey) {
         clearProjectSkillFilter();
-        return;
+        return 'cleared';
     }
 
     activeSkillFilter = skillKey;
@@ -564,6 +584,19 @@ function applyProjectSkillFilter(selectedSkillTag) {
         card.classList.toggle('active-filter', isMatch);
         card.classList.toggle('dimmed', !isMatch);
     });
+
+    return 'applied';
+}
+
+function handleSkillFilterActivation(skillTag) {
+    const filterState = applyProjectSkillFilter(skillTag);
+
+    if (filterState === 'cleared') {
+        scrollToSkillsSection();
+        return;
+    }
+
+    scrollToFirstActiveProject();
 }
 
 skillTags.forEach(skillTag => {
@@ -572,13 +605,13 @@ skillTags.forEach(skillTag => {
     skillTag.setAttribute('aria-pressed', 'false');
 
     skillTag.addEventListener('click', () => {
-        applyProjectSkillFilter(skillTag);
+        handleSkillFilterActivation(skillTag);
     });
 
     skillTag.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            applyProjectSkillFilter(skillTag);
+            handleSkillFilterActivation(skillTag);
         }
     });
 });

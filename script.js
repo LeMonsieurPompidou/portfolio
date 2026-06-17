@@ -134,6 +134,10 @@ projectData['muscu-app'] = {
     report: `This personal engineering initiative focuses on creating a comprehensive, locally constrained mobile tracking system combining bodybuilding logging, caloric tracking, and workout timers. The project was executed in two structural phases. The first phase involved complete UI/UX benchmarking and layout prototyping, resulting in an open-source design dashboard built using React, TypeScript, and shadcn/ui to map out views, state management, and user flows. The second phase translated these concepts into a production-ready pipeline, utilizing Python and the Kivy framework alongside Buildozer to compile a standalone Android package (.apk). To ensure complete local autonomy and performance without external cloud database dependencies, the application embeds a robust SQLite architecture managing data relational persistence for user history, progress vectors, and exercise parameters.`
 };
 
+projectData['econometrics-r'] = {
+    report: `This data science and computational econometrics project focuses on the implementation of advanced statistical frameworks to analyze multi-variable datasets and isolate causal relationships under strict mathematical validation constraints. Developed entirely within RStudio, the analytical pipeline executes multivariate linear and non-linear regressions, controls for omitted variable bias (OVB) through fixed effects, and addresses endogeneity challenges using two-stage least squares (2SLS) with instrumental variables (IV) estimation. The framework incorporates robust standard error estimations, joint hypothesis testing via F-statistics, and Overidentifying Restriction (J-test) validation layers. This rigorous programmatic approach translates complex socio-economic and institutional data arrays into actionable predictive models, establishing a robust computational workflow for data validation and statistical forecasting.`
+};
+
 // =============================================
 // HAMBURGER MENU TOGGLE
 // =============================================

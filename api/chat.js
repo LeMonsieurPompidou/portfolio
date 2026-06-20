@@ -33,12 +33,12 @@ export default async function handler(req, res) {
 
         try {
             const genAI = new GoogleGenerativeAI(apiKey);
-            const model = genAI.getGenerativeModel({ model: 'gemini-3.1-pro-preview' });
+            const model = genai.getGenerativeModel({ model: 'gemini-pro-latest' });
             const result = await model.generateContent(fullPrompt);
             
             // Safely extract text from response
-            const responseObj = await result?.response;
-            const text = responseObj?.text?.();
+            const response = await result.response;
+            const text = response.text();
             
             if (!text || typeof text !== 'string') {
                 throw new Error('Empty or invalid response from Gemini API');

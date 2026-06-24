@@ -22,6 +22,10 @@ const chatbotForm = document.getElementById('chatbot-form');
 const chatbotInput = document.getElementById('chatbot-input');
 const chatbotMessages = document.getElementById('chatbot-messages');
 const chatbotSendButton = chatbotForm ? chatbotForm.querySelector('.chatbot-send') : null;
+const projectSearchInput = document.getElementById('project-search-input');
+const projectSearchClear = document.getElementById('project-search-clear');
+const projectSearchStatus = document.getElementById('project-search-status');
+const projectSearchEmpty = document.getElementById('project-search-empty');
 
 // =============================================
 // CHATBOT SYSTEM PROMPT
@@ -98,14 +102,14 @@ The second phase extended the architecture into a closed-loop system by integrat
         report: `This semester project, conducted at the REHAssist lab at EPFL, focused on the development and integration of an interactive virtual reality environment designed for neurorehabilitation. The primary objective was to bridge the gap between physical therapeutic hardware and digital feedback systems by interfacing a virtual gaming environment with two key medical systems: the LegoPress, a seated lower-limb training and performance assessment device, and a Functional Electrical Stimulation (FES) system. This integrated setup was specifically designed to provide intuitive visual biofeedback for stroke survivors or individuals suffering from a loss of proprioceptive awareness.
 
 On the technical side, the project required establishing a robust, low-latency communication pipeline between the mechanical hardware and the software application. I worked on processing real-time kinematic and kinetic data collected via potentiometers and load cells embedded on the LegoPress device to accurately capture patient position and force exertion. This data was streamed into a custom graphical user interface (GUI) using a high-throughput User Datagram Protocol (UDP) socket communication framework. Within the Unity engine, I developed a versatile virtual environment featuring four distinct clinical training modes alongside two tailored gamification modules engineered to enhance user compliance and motivation during recovery sessions. To prioritize accessibility and patient inclusivity, the environment featured six selectable user avatars, three localized camera perspectives, and an embedded bilingual localization system supporting both English and Arabic.` },
-    
+
     olfactory: {
         report: `Developed as part of the EPFL course Controlling Behavior in Animals and Robots, this project explored the implementation of a bio-inspired, motion-based olfactory navigation algorithm to guide an autonomous agent toward the source of a complex odor plume. Moving beyond traditional wind-guided navigation strategies, the research investigated how walking fruit flies (Drosophila melanogaster) utilize the spatiotemporal timing and motion direction of odor encounters—rather than ambient wind direction—to navigate turbulent environments. The core of the architecture relied on adopting a bilateral sensing approach modeled after a Hassenstein-Reichardt Correlator (HRC), a biological circuit typically studied in visual motion detection, to process concentration inputs from the agent's left and right antennae.
 
 On the algorithmic side, the work involved developing a closed-loop sensorimotor controller that determined the moving odor's relative direction by applying a discrete time delay and cross-correlation to simulated olfactory receptor neuron (ORN) intensity signals. If the HRC model detected a left-to-right or right-to-left odor motion, the controller dynamically modulated steering commands to turn the agent toward the oncoming plume. To resolve heading ambiguities occurring when the plume encountered the agent directly from the front or back—where the standard bilateral HRC output drops to zero—the framework was expanded by proposing a novel, secondary HRC configuration operating within a single antenna.
 
 The complete control pipeline was implemented and evaluated through multiple physics-based simulation experiences within the MuJoCo simulator, utilizing its high-performance physics engine to test the agent's locomotion under different chemical concentration gradients. These experiments successfully identified the distinct advantages of bilateral motion-correlating mechanisms in plume tracking alongside the inherent structural limitations of bio-inspired sensory architectures when facing complex, non-linear trajectories.` },
-    
+
     'rocket-mpc': { report: `This project focused on the end-to-end design, implementation, and evaluation of advanced predictive control strategies to automate the flight of an underactuated rocket prototype. Operating on a complex 12-state system vector encompassing angular velocities, Euler angles, translational velocities, and positions, the rocket's position is managed exclusively through thrust-vectoring and a single main thruster. The control architecture was built progressively, beginning with a linearized state-space model to implement a Constrained Linear MPC regulator utilizing quadratic programming (QP) to enforce strict safety limits on thruster forces and gimbal pitch/roll angles. To eliminate steady-state offsets introduced by physical mismatches—such as unmodeled changes in rocket mass or external wind disturbances—the linear framework was extended by integrating a target tracking system alongside a steady-state disturbance estimator.
 
 The final phase of the project addressed the intrinsic structural limitations of linear controllers when handling highly coupled, non-linear system dynamics during aggressive roll maneuvering. Using CasADi, a Nonlinear Model Predictive Control (NMPC) framework was engineered to directly handle the full non-linear rocket physics over a moving finite horizon. Additionally, a robust delay-compensation script utilizing Euler integration was developed to mitigate computational latency and prevent closed-loop instability. Through extensive comparative simulations, this multi-modal control pipeline demonstrated the superior convergence, trajectory tracking accuracy, and robustness of non-linear predictive control under severe physical constraints.` },
@@ -117,7 +121,7 @@ To handle real-world uncertainties and ensure reactive safety, the architecture 
     'gait-phase': { report: `Developed as part of a five-student group project at EPFL, this comprehensive study focused on the biomechanical analysis, modeling, and algorithmic classification of human gait phases to advance control frameworks for assistive lower-limb exoskeletons. The project was structured into distinct technical phases, beginning with the development of custom heuristic detection algorithms to identify core gait cycle events—such as heel strike and toe-off—across multimodal datasets comprising electromyography (EMG) signals, kinematic positions, and synchronous video recordings from healthy subjects and spinal cord injured (SCI) patients. To systematically isolate the parameters expressing the highest variance and quantify the specific effects of Epidural Electrical Stimulation (EES) on neuromuscular recovery, a Principal Component Analysis (PCA) pipeline was engineered, successfully clustering physiological gait profiles and identifying mechanical anomalies in joint angle variabilities.
 
 The research extended into mathematical and computational modeling to validate these biological behaviors through simplified and complex musculoskeletal simulations. A Spring-Loaded Inverted Pendulum (SLIP) model was implemented to evaluate center-of-mass energy conservation and investigate system stability margins relative to changes in the leg's angle of attack and spring stiffness bounds. Concurrently, complex multi-compartment musculoskeletal models were constructed in OpenSim to compute muscle-tendon moment arms, fiber lengths, and joint moments during active gait, validating experimental EMG envelopes against true mechanical joint actions. Finally, the integrated pipeline was applied to clinical pathology cases within the SCoNE (Spinal Cord Injury Neuromuscular Evaluation) framework. Using this specialized software, we simulated orthopedic interventions such as tendon lengthening surgeries for spasticity and contracture, plotting muscle-tendon unit (MTU) forces and fiber lengths to evaluate post-operative gait regularity and predict neuromuscular adaptations in neurological rehabilitation.` },
-    
+
     'poppins': { report: `Developed as part of the Innovation Management course at EPFL by a collaborative team of seven students, this project focused on the complete conceptualization, strategic planning, and operational design of "Poppins' Sharing Boxes". The project addressed the widespread challenge of social isolation and unsustainable consumption within student micro-communities by introducing an automated physical locker network combined with a digital sharing platform. This framework allowed university students living in tight-budget, small-apartment configurations to securely lock away, catalog, rent, and borrow underutilized recreational and utilitarian goods—such as sporting equipment, kitchen appliances, and repair tools—thereby simultaneously fostering community interactions, optimizing living spaces, and promoting a circular economy.
 
 On the strategic management and development side, the project required a comprehensive, multi-layered business analysis to validate market viability and map out a realistic path to deployment. The process began with a market validation survey gathering data from over 50 respondents to identify target product demands, which directly fed into a structured SWOT analysis and an expansive stakeholder mapping matrix encompassing entities from local student housing foundations (FMEL) to municipal regulatory bodies. Following these market studies, a complete go-to-market schedule was plotted through a detailed Gantt chart tracking synchronized development phases across hardware locker assembly, electronic actuation control, mobile application user-interface design, and local community-building campaigns. To ensure long-term platform maintenance and accountability, a closed-loop gamified trust framework was designed, forcing users to evaluate and rate the condition of items upon retrieval, which successfully established a high-trust, low-overhead peer-to-peer asset management model engineered for dense student ecosystems.` }
@@ -137,6 +141,13 @@ projectData['muscu-app'] = {
 projectData['econometrics-r'] = {
     report: `This data science and computational econometrics project focuses on the implementation of advanced statistical frameworks to analyze multi-variable datasets and isolate causal relationships under strict mathematical validation constraints. Developed entirely within RStudio, the analytical pipeline executes multivariate linear and non-linear regressions, controls for omitted variable bias (OVB) through fixed effects, and addresses endogeneity challenges using two-stage least squares (2SLS) with instrumental variables (IV) estimation. The framework incorporates robust standard error estimations, joint hypothesis testing via F-statistics, and Overidentifying Restriction (J-test) validation layers. This rigorous programmatic approach translates complex socio-economic and institutional data arrays into actionable predictive models, establishing a robust computational workflow for data validation and statistical forecasting.`
 };
+
+const recommendationsData = [
+    { quote: 'Mr Rahnemayan obtained the excellent grade of 5.75 [...]. This places him in the top 20% of master students [...]. During this project, he demonstrated excellent analytical abilities, technical competence, and a genuine aptitude for scientific research.', author: 'Prof. Auke Jan Ijspeert', institution: 'EPFL', pdf: 'assets/recommendations/EPFL_Auke_Ijspeert.pdf' },
+    { quote: 'Sam produced work of a very high standard, combining strong analytical skills with practical engineering capability. He is a motivated and capable researcher able to work independently and collaboratively across disciplines [...].', author: 'Prof. Marc Carmichael', institution: 'UTS Robotics Institute', pdf: 'assets/recommendations/UTS_Marc_Carmichael.pdf' },
+    { quote: 'Mr Rahnemayan is an outstanding student with hands-on skills in programming and design. I recommend him to any company or institution looking for a conscientious engineer with excellent practical sense [...].', author: 'Prof. Mohamed Bouri', institution: 'EPFL', pdf: 'assets/recommendations/EPFL_Mohamed_Bouri.pdf' },
+    { quote: 'The candidate worked with a high degree of autonomy and demonstrated passion and dedication. His robotics education and work experience are valuable assets for any company [...].', author: 'Dr. Amalric Ortlieb', institution: 'Autonomyo', pdf: 'assets/recommendations/Autonomyo_Amalric_Ortlieb.pdf' }
+];
 
 // =============================================
 // HAMBURGER MENU TOGGLE
@@ -161,6 +172,7 @@ function closeMenu() {
 // =============================================
 
 function updateChatbotState(isOpen) {
+    if (!chatbotPanel || !chatbotToggle || !chatbotInput) return;
     chatbotPanel.classList.toggle('active', isOpen);
     chatbotPanel.setAttribute('aria-hidden', String(!isOpen));
     chatbotToggle.setAttribute('aria-expanded', String(isOpen));
@@ -172,10 +184,12 @@ function updateChatbotState(isOpen) {
 }
 
 function toggleChatWindow() {
+    if (!chatbotPanel) return;
     updateChatbotState(!chatbotPanel.classList.contains('active'));
 }
 
 function closeChatWindow() {
+    if (!chatbotPanel) return;
     updateChatbotState(false);
 }
 
@@ -302,48 +316,18 @@ function renderDynamicRecommendations() {
 
     if (!recommendationsSection || !recommendationsContainer) return;
 
-    recommendationsContainer.innerHTML = '';
+    recommendationsContainer.innerHTML = recommendationsData.map((recommendation) => {
+        const card = document.createElement('article');
+        card.className = 'recommendation-card';
+        card.innerHTML = `
+            <blockquote>${escapeHtml(recommendation.quote)}</blockquote>
+            <cite>${escapeHtml(recommendation.author)}, ${escapeHtml(recommendation.institution)}</cite>
+            <a href="${escapeHtml(recommendation.pdf)}" target="_blank" rel="noopener noreferrer">Open recommendation letter (PDF)</a>
+        `;
+        return card.outerHTML;
+    }).join('');
 
-    const recommendationCards = [];
-
-    projectCards.forEach((card) => {
-        const recs = [];
-        const recommendationQuote = card.dataset.recommendationQuote || card.getAttribute('data-recommendation-quote') || '';
-        const recommendationPdf = card.dataset.recommendationPdf || card.getAttribute('data-recommendation-pdf') || '';
-        const recommendationQuote2 = card.dataset.recommendationQuote2 || card.getAttribute('data-recommendation-quote-2') || card.getAttribute('data-recommendation-quote2') || '';
-        const recommendationPdf2 = card.dataset.recommendationPdf2 || card.getAttribute('data-recommendation-pdf-2') || card.getAttribute('data-recommendation-pdf2') || '';
-
-        if (recommendationQuote && recommendationQuote.trim()) {
-            recs.push({ quote: recommendationQuote, pdf: recommendationPdf });
-        }
-
-        if (recommendationQuote2 && recommendationQuote2.trim()) {
-            recs.push({ quote: recommendationQuote2, pdf: recommendationPdf2 });
-        }
-
-        recs.forEach((r) => {
-            const recommendationCitation = formatRecommendationCitation(r.pdf);
-            const quoteHtml = escapeHtml(r.quote);
-            const citationHtml = escapeHtml(recommendationCitation || '');
-            const pdfHref = escapeHtml(r.pdf || '');
-
-            const recommendationCard = document.createElement('article');
-            recommendationCard.className = 'recommendation-card';
-            recommendationCard.innerHTML = `
-                <blockquote class="recommendation-quote">${quoteHtml}</blockquote>
-                <cite class="recommendation-cite">${citationHtml}</cite>
-                ${pdfHref ? `<a href="${pdfHref}" target="_blank" rel="noopener noreferrer" class="recommendation-btn">View Original Document (PDF)</a>` : ''}
-            `;
-
-            recommendationCards.push(recommendationCard);
-        });
-    });
-
-    recommendationCards.forEach((recommendationCard) => {
-        recommendationsContainer.appendChild(recommendationCard);
-    });
-
-    recommendationsSection.style.display = recommendationCards.length > 0 ? 'block' : 'none';
+    recommendationsSection.style.display = recommendationsData.length > 0 ? 'block' : 'none';
 }
 
 function createLoadingMessage() {
@@ -517,10 +501,10 @@ async function sendMessage(event) {
     }
 }
 
-hamburger.addEventListener('click', toggleMenu);
-chatbotToggle.addEventListener('click', toggleChatWindow);
-chatbotClose.addEventListener('click', closeChatWindow);
-chatbotForm.addEventListener('submit', sendMessage);
+if (hamburger) hamburger.addEventListener('click', toggleMenu);
+if (chatbotToggle) chatbotToggle.addEventListener('click', toggleChatWindow);
+if (chatbotClose) chatbotClose.addEventListener('click', closeChatWindow);
+if (chatbotForm) chatbotForm.addEventListener('submit', sendMessage);
 
 // =============================================
 // SKILL-TO-PROJECT FILTERING
@@ -533,6 +517,53 @@ function getMatchedProjectIds(skillTag) {
         .split(',')
         .map(projectId => projectId.trim())
         .filter(Boolean);
+}
+
+function applyProjectSearch(query) {
+    if (projectCards.length === 0) return;
+
+    const normalizedQuery = query.trim().toLowerCase();
+    let visibleCount = 0;
+
+    projectCards.forEach((card) => {
+        const category = card.closest('.project-category-section');
+        const categoryText = category ? category.querySelector('.project-category-heading')?.textContent || '' : '';
+        const dataText = Array.from(card.attributes).map(attribute => attribute.value).join(' ');
+        const searchableText = `${card.textContent} ${categoryText} ${dataText}`.toLowerCase();
+        const isMatch = !normalizedQuery || searchableText.includes(normalizedQuery);
+
+        card.classList.toggle('search-hidden', !isMatch);
+        if (isMatch) visibleCount += 1;
+    });
+
+    document.querySelectorAll('.project-category-section').forEach((section) => {
+        const hasVisibleProject = Array.from(section.querySelectorAll('.project-card'))
+            .some(card => !card.classList.contains('search-hidden'));
+        section.classList.toggle('search-empty', Boolean(normalizedQuery) && !hasVisibleProject);
+    });
+
+    if (projectSearchClear) projectSearchClear.hidden = !normalizedQuery;
+    if (projectSearchEmpty) projectSearchEmpty.hidden = visibleCount !== 0;
+    if (projectSearchStatus) {
+        projectSearchStatus.textContent = normalizedQuery
+            ? `${visibleCount} project${visibleCount === 1 ? '' : 's'} found.`
+            : '';
+    }
+}
+
+if (projectSearchInput) {
+    projectSearchInput.addEventListener('input', () => {
+        applyProjectSearch(projectSearchInput.value);
+    });
+}
+
+if (projectSearchClear) {
+    projectSearchClear.addEventListener('click', () => {
+        if (!projectSearchInput) return;
+        projectSearchInput.value = '';
+        applyProjectSearch('');
+        projectSearchInput.focus();
+    });
 }
 
 function clearProjectSkillFilter() {
@@ -593,6 +624,14 @@ function applyProjectSkillFilter(selectedSkillTag) {
 }
 
 function handleSkillFilterActivation(skillTag) {
+    if (projectCards.length === 0) {
+        const matchedProjectIds = getMatchedProjectIds(skillTag);
+        if (matchedProjectIds.length > 0) {
+            window.location.href = `projects.html?projects=${encodeURIComponent(matchedProjectIds.join(','))}`;
+        }
+        return;
+    }
+
     const filterState = applyProjectSkillFilter(skillTag);
 
     if (filterState === 'cleared') {
@@ -655,6 +694,7 @@ navLinks.forEach(link => {
 // =============================================
 
 function openModal(projectCardOrId) {
+    if (!projectModal) return;
     // Accept either a DOM element (preferred) or a projectId string.
     let projectCard = projectCardOrId;
     if (typeof projectCardOrId === 'string') {
@@ -886,7 +926,7 @@ function openModal(projectCardOrId) {
             );
         }
 
-        linksContainer.innerHTML = linkButtons.length > 0 
+        linksContainer.innerHTML = linkButtons.length > 0
             ? linkButtons.join('')
             : '<p>Additional resources can be shared upon request.</p>';
     }
@@ -931,19 +971,20 @@ function openModal(projectCardOrId) {
 }
 
 function closeModal() {
+    if (!projectModal) return;
     projectModal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
 // Close modal on overlay click
-modalOverlay.addEventListener('click', closeModal);
+if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
 // Close modal on X button click
-modalClose.addEventListener('click', closeModal);
+if (modalClose) modalClose.addEventListener('click', closeModal);
 
 // Close modal on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+    if (e.key === 'Escape' && projectModal && projectModal.classList.contains('active')) {
         closeModal();
     }
 });
@@ -954,9 +995,10 @@ projectCards.forEach(card => {
         openModal(card);
     });
 
-    // Keyboard support (Enter key)
-    card.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
+    // Keyboard support for the card's button-like interaction.
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
             openModal(card);
         }
     });
@@ -967,7 +1009,7 @@ projectCards.forEach(card => {
 // =============================================
 
 document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+    if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
         closeMenu();
     }
 });
@@ -988,6 +1030,14 @@ document.addEventListener('keydown', (e) => {
 // =============================================
 
 function updateActiveLink() {
+    const anchorNavLinks = Array.from(navLinks).filter((link) => {
+        return (link.getAttribute('href') || '').startsWith('#');
+    });
+
+    // Page-level navigation uses explicit URLs and sets its active state in HTML.
+    // Only manage active state for same-page anchor links.
+    if (anchorNavLinks.length === 0) return;
+
     let currentSection = '';
     const sections = document.querySelectorAll('section');
 
@@ -998,7 +1048,7 @@ function updateActiveLink() {
         }
     });
 
-    navLinks.forEach(link => {
+    anchorNavLinks.forEach(link => {
         link.classList.remove('active');
     });
 
@@ -1018,6 +1068,17 @@ window.addEventListener('scroll', updateActiveLink);
 
 document.addEventListener('DOMContentLoaded', () => {
     renderDynamicRecommendations();
+
+    const projectQuery = new URLSearchParams(window.location.search).get('projects');
+    if (projectQuery && projectCards.length > 0) {
+        const projectIds = projectQuery.split(',').map(id => id.trim()).filter(Boolean);
+        projectCards.forEach(card => {
+            const isMatch = projectIds.includes(card.dataset.projectId);
+            card.classList.toggle('active-filter', isMatch);
+            card.classList.toggle('dimmed', !isMatch);
+        });
+        setTimeout(scrollToFirstActiveProject, 120);
+    }
 
     const hash = window.location.hash.substring(1);
     if (hash) {

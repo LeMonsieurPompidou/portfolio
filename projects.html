@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robotics, control, software, and infrastructure projects by Sam Rahnemayan.">
+    <title>Projects | Sam Rahnemayan</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a class="logo" href="index.html" aria-label="Sam Rahnemayan home">Sam Rahnemayan<span>Robotics Engineer</span></a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+                </button>
+                <nav class="nav" id="nav-menu" aria-label="Primary navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="projects.html" class="nav-link active" aria-current="page">Projects</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+<main>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+
+                <nav class="projects-sub-nav" aria-label="Project categories">
+                    <a href="#med-robotics" aria-label="Medical Robotics and Rehabilitation Engineering">Medical Robotics</a>
+                    <a href="#auto-systems" aria-label="Autonomous Systems and Control Engineering">Autonomous Systems</a>
+                    <a href="#software-cloud" aria-label="System, Cloud and Software Infrastructure">Software & Cloud</a>
+                </nav>
+
+                <div class="project-search" role="search">
+                    <label for="project-search-input">Search projects</label>
+                    <div class="project-search-field">
+                        <span class="project-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span>
+                        <input id="project-search-input" type="search" placeholder="Search projects, tools, or methods" autocomplete="off">
+                        <button id="project-search-clear" type="button" aria-label="Clear project search" hidden>Clear</button>
+                    </div>
+                    <p id="project-search-status" class="sr-only" aria-live="polite"></p>
+                </div>
+                <p id="project-search-empty" class="project-search-empty" hidden>No projects found. Try a different term.</p>
+
+                <section id="med-robotics" class="project-category-section project-category-section--narrow">
+                    <header class="project-category-header"><span>01</span><h3 class="project-category-heading">Medical Robotics & Rehabilitation Engineering</h3></header>
+                    <div class="projects-grid projects-grid-2x2">
+
+
+                        <!-- Master Thesis -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="thesis" data-project-title="Neuromuscular Adaptation to Exoskeleton Assistance" data-project-date="Sept. 2025 - Mar. 2026"
+                        data-images="assets/pictures/master thesis/ArmeoPower.jpg, assets/pictures/master thesis/Subject1_during_Experiment.jpeg, assets/pictures/master thesis/Vicon_Camera_Setup.png, assets/pictures/master thesis/Vicon_Camera_Software.PNG, assets/pictures/master thesis/EMG_Placement.png"
+                        data-video="https://youtu.be/zVDL7uy1FhA, https://youtu.be/Z8wUxDSp8lk, https://youtu.be/2LS99n-bfFk"
+                        data-pdf="assets/reports/Master_Thesis.pdf"
+                        data-github="https://github.com/LeMonsieurPompidou/exoskeleton-adaptation-analysis"
+                        data-collaboration="This thesis was a research collaboration between the Biorobotics Laboratory (BioRob) at EPFL and the University of Technology Sydney (UTS). The experimental phase and data collection were physically conducted at the UTS Robotics Institute under the supervision of A/Prof. Marc Carmichael and Prof. Auke Jan Ijspeert."
+                        data-recommendation-quote="Mr Rahnemayan obtained the excellent grade of 5.75 [...]. This places him in the top 20% of master students[...]. During this project, he demonstrated excellent analytical abilities, technical competence, and a genuine aptitude for scientific research."
+                        data-recommendation-pdf="assets/recommendations/EPFL_Auke_Ijspeert.pdf"
+                        data-recommendation-quote-2="Sam produced work of a very high standard, combining strong analytical skills with practical engineering capability. He is a motivated and capable researcher with the ability to work both independently and collaboratively across disciplines."
+                        data-recommendation-pdf-2="assets/recommendations/UTS_Marc_Carmichael.pdf" aria-label="Open details for Neuromuscular Adaptation to Exoskeleton Assistance">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/master thesis/Subject1_during_Experiment.jpeg');" aria-hidden="true"></div>
+                            <span class="project-badge">Master Thesis (EPFL/UTS)</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Master Thesis: Neuromuscular Adaptation to Exoskeleton Assistance</h3>
+                        <p class="project-date">Sept. 2025 - Apr. 2026</p>
+                        </div>
+                        <p class="project-description">Developed a multi-modal experimental framework to quantify neuromuscular adaptation under upper-limb exoskeleton assistance and reveal clinically actionable coordination patterns.</p>
+                        <div class="project-tags">
+                        <span class="tag">International Research</span>
+                        <span class="tag">ArmeoPower Exoskeleton</span>
+                        <span class="tag">Vicon Motion Capture</span>
+                        <span class="tag">EMG Signal Processing</span>
+                        <span class="tag">Multi-modal Analysis</span>
+                        <span class="tag">Upper Limb Rehabilitation</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Internship: Autonomyo -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="autonomyo" data-project-title="Rehabilitation Game & Instrumented Soles" data-project-date="Jul. 2024 - Jan. 2025"
+                        data-images="assets/pictures/autonomyo/Autonomyo_Physical_Prototype_V1.jpg, assets/pictures/autonomyo/Autonomyo_Isometric_CAD_Assembly.png, assets/pictures/autonomyo/Game_Interface_Bluetooth_Connection.png, assets/pictures/autonomyo/Game_Interface_CoM_Calibration.png, assets/pictures/autonomyo/Hardware_Architecture_and_Wiring_Schematic.png, assets/pictures/autonomyo/Sole_Bottom_View_Open_PCB_Sensor_Layout.png, assets/pictures/autonomyo/Sole_Bottom_View_Closed_Protective_Cover.png"
+                        data-pdf="assets/reports/Autonomyo_Report.pdf"
+                        data-recommendation-quote="The candidate was able to work with a lot of autonomy throughout the project and demonstrated passion and dedication [...] His large education in robotics complemented by work experience, is a great asset for any company."
+                        data-recommendation-pdf="assets/recommendations/Autonomyo_Amalric_Ortlieb.pdf" aria-label="Open details for Rehabilitation Game & Instrumented Soles">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/autonomyo/Autonomyo_Isometric_CAD_Assembly.png');" aria-hidden="true"></div>
+                        <span class="project-badge">Industrial Internship</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Rehabilitation Game & Instrumented Soles</h3>
+                        <p class="project-date">Jul. 2024 - Jan. 2025</p>
+                        </div>
+                        <p class="project-description">Engineered a full-stack rehabilitation platform combining instrumented insoles, embedded telemetry, and a Unity interface to deliver real-time gait biofeedback.</p>
+                        <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">UDP Network Communication</span>
+                        <span class="tag">Lower Limb Rehabilitation</span>
+                        <span class="tag">CAD</span>
+                        <span class="tag">Embedded Programming (ESP32/ESP-IDF, STM32)</span>
+                        <span class="tag">PCB Design (KiCad)</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Virtual Environment for Rehabilitation -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="legov" data-project-title="Virtual Environment for Rehabilitation (LegoPress & FES)" data-project-date="Feb. 2024 - Jun. 2024"
+                        data-images="assets/pictures/legopress/Integration_of_LegoPress_with_Virtual_Reality.png, assets/pictures/legopress/LegoPress.jpg ,assets/pictures/legopress/User_Interface_of_the_Virtual_Rehabilitation_Environment.png, assets/pictures/legopress/Training_Mode.png, assets/pictures/legopress/Installation_Process.png"
+                        data-video="https://youtu.be/N9PgBFOIQfg, https://youtu.be/jiSyVFfmmuc"
+                        data-pdf="assets/reports/Virtual_environment_for_rehabilitation_using_FES_and_LegoPress.pdf"
+                        data-recommendation-quote="Mr Rahnemayan is an outstanding student with different hands-on skills in programming and design [...] I am pleased to recommend Mr Rahnemayan to any company or institution looking for a conscientious engineer with an excellent practical sense."
+                        data-recommendation-pdf="assets/recommendations/EPFL_Mohamed_Bouri.pdf" aria-label="Open details for Virtual Environment for Rehabilitation (LegoPress & FES)">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/legopress/Integration_of_LegoPress_with_Virtual_Reality.png');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Semester Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Virtual Environment for Rehabilitation</h3>
+                        <p class="project-date">Feb. 2024 - Jun. 2024</p>
+                        </div>
+                        <p class="project-description">Developed a gamified rehabilitation environment that integrated FES-driven exercise protocols with interactive feedback to improve engagement and repeatability.</p>
+                        <div class="project-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">UDP Network Communication</span>
+                        <span class="tag">Sensor Integration</span>
+                        <span class="tag">Gamification</span>
+                        <span class="tag">Proprioceptive Feedback</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Gait Phase Detection -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="gait-phase" data-project-title="Gait Phase Detection for Assisted Walking" data-project-date="Feb. 2023 - Jul. 2023"
+                        data-images="assets/pictures/locomotion/Gait_Cycle_Clustering_&_Principal_Component_Analysis_(PCA).png ,assets/pictures/locomotion/SLIP_Pendulum_Model_Locomotion_Stability_Margins.png ,assets/pictures/locomotion/OpenSim_Musculoskeletal_Simulation_&_Moment_Arm_Evaluation.png ,assets/pictures/locomotion/Clinical_Predictive_Modeling_Post-Surgery_Gait_Analytics.png" aria-label="Open details for Gait Phase Detection for Assisted Walking">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/locomotion/Gait_Cycle_Clustering_&_Principal_Component_Analysis_(PCA).png');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Gait Phase Detection for Assisted Walking</h3>
+                        <p class="project-date">Feb. 2023 - Jul. 2023</p>
+                        </div>
+                        <p class="project-description">Built a multimodal analysis workflow to detect gait events and quantify biomechanical adaptations across assisted and unassisted walking conditions.</p>
+                        <div class="project-tags">
+                        <span class="tag">Matlab</span>
+                        <span class="tag">PCA</span>
+                        <span class="tag">OpenSim / SCONE</span>
+                        <span class="tag">EMG</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+                    </div>
+                </section>
+
+                <section id="auto-systems" class="project-category-section">
+                    <header class="project-category-header"><span>02</span><h3 class="project-category-heading">Autonomous Systems & Control Engineering</h3></header>
+                    <div class="projects-grid">
+
+
+                        <!-- Rocket Drone MPC -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="rocket-mpc" data-project-title="Rocket Drone MPC Controller Design" data-project-date="Oct. 2023 - Jan. 2024"
+                        data-images="assets/pictures/MPC/Linear_MPC_Reference_Path_and_Roll_Angle_Tracking.jpg, assets/pictures/MPC/Offset-Free_MPC_Architecture_&_Disturbance_Estimator_Diagram.png, assets/pictures/MPC/Offset-Free_MPC_Tracking_with_Time-Varying_Rocket_Mass.png, assets/pictures/MPC/Predictive_Delay-Compensated_Controller_Trajectory_(100ms_Latency).png"  aria-label="Open details for Rocket Drone MPC Controller Design">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/MPC/Linear_MPC_Reference_Path_and_Roll_Angle_Tracking.jpg');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Rocket Drone MPC Controller Design</h3>
+                        <p class="project-date">Oct. 2023 - Jan. 2024</p>
+                        </div>
+                        <p class="project-description">Implemented stabilizing linear and nonlinear MPC controllers to track thrust-vectoring trajectories on an underactuated rocket-drone platform.</p>
+                        <div class="project-tags">
+                        <span class="tag">Linear/Nonlinear MPC</span>
+                        <span class="tag">Multivariable Control</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Crazyfly Project -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="crazyfly" data-project-title="Drone Control (Crazyfly)" data-project-date="Mar. 2025 - May 2025"
+                        data-images="assets/pictures/crazyfly/Simulation_Phase_using_Webots.jpg"
+                        data-video="https://youtu.be/Y0fS7yWtmhg" aria-label="Open details for Drone Control (Crazyfly)">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/crazyfly/Simulation_Phase_using_Webots.jpg');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Drone Control (Crazyfly)</h3>
+                        <p class="project-date">Mar. 2025 - May 2025 </p>
+                        </div>
+                        <p class="project-description">Built a simulation-to-flight control stack enabling autonomous gate traversal with computer vision and cascaded PID control on physical quadrotor hardware.</p>
+                        <div class="project-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Control Systems</span>
+                        <span class="tag">Simulation (Webots)</span>
+                        <span class="tag">Hardware Integration</span>
+                        <span class="tag">Real-World Flight Testing</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+
+                        <!-- Robot Competition -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="robot-competition" data-project-title="Autonomous Duplo-Collector Robot" data-project-date="Feb. 2025 - Jun. 2025"
+                        data-images="assets/pictures/duplo-dockus/Robot_Final.jpg, assets/pictures/duplo-dockus/The_Team.jpg, assets/pictures/duplo-dockus/Arena.jpg, assets/pictures/duplo-dockus/Robot_Top_View.jpg, assets/pictures/duplo-dockus/Arena_Configuration.png"
+                        data-video="https://youtu.be/c5HYJV0UYp4, https://youtu.be/uzW1x62ejLs"
+                        data-pdf="assets/reports/Duplo_Dockus_Report.pdf" aria-label="Open details for Autonomous Duplo-Collector Robot">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/duplo-dockus/DuploDockus_diagtop.jpg');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Semester Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Autonomous Duplo-Collector Robot</h3>
+                        <p class="project-date">Feb. 2025 - Jun. 2025 </p>
+                        </div>
+                        <p class="project-description">Delivered the end-to-end architecture of an autonomous competition robot for reliable brick detection, collection, and zone-aware delivery in a constrained arena.</p>
+                        <div class="project-tags">
+                        <span class="tag">Mechanical Design</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Software Development</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Locomotion in Zebrafish -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="zebrafish" data-project-title="Locomotion in Zebrafish" data-project-date="Mar. 2025 - Jun. 2025"
+                        data-images="assets/pictures/zebrafish/Animal_Head_Trajectory.png, assets/pictures/zebrafish/Evolution_of_the_Oscillator_Phases_over_Time_for_the_Optimized_Controller.png, assets/pictures/zebrafish/Evolution_of_the_Joint_Angles.png"
+                        data-video="https://youtu.be/sC1R19YqUJ0, https://youtu.be/rgnljdQnqx4" aria-label="Open details for Locomotion in Zebrafish">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/zebrafish/Zebrafish.png');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Locomotion in Zebrafish</h3>
+                        <p class="project-date">Mar. 2025 - Jun. 2025 </p>
+                        </div>
+                        <p class="project-description">Developed a computational biomechanics pipeline to study neural locomotion strategies through CPG-driven swimming dynamics and proprioceptive feedback loops.</p>
+                        <div class="project-tags">
+                        <span class="tag">Computational Modeling (MuJoCo)</span>
+                        <span class="tag">CPG Control Systems</span>
+                        <span class="tag">Biomechanics</span>
+                        <span class="tag">Proprioceptive Feedback</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Autonomous Navigation -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="auto-nav" data-project-title="Autonomous Navigation for a Wheeled Robot" data-project-date="Sep. 2023 - Dec. 2023"
+                        data-images="assets/pictures/Thymio/Computer_Vision_Localization_&_Global_Path_Planning.jpg, assets/pictures/Thymio/Hybrid_Control_Architecture_&_State_Machine_Logic.jpeg, assets/pictures/Thymio/Closed-Loop_Trajectory_Validation_&_Odometry_Fusion.png"
+                        data-video="https://youtu.be/0kyLvXziX_s" aria-label="Open details for Autonomous Navigation for a Wheeled Robot">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/Thymio/Computer_Vision_Localization_&_Global_Path_Planning.jpg');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Autonomous Navigation for a Wheeled Robot</h3>
+                        <p class="project-date">Sep. 2023 - Dec. 2023</p>
+                        </div>
+                        <p class="project-description">Developed a perception-to-planning stack for autonomous navigation with obstacle avoidance and state estimation in uncertain 2D environments.</p>
+                        <div class="project-tags">
+                        <span class="tag">A* Algorithm</span>
+                        <span class="tag">Kalman Filter</span>
+                        <span class="tag">Computer Vision</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Motion-based Olfactory Algorithm -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="olfactory" data-project-title="Motion-based Olfactory Algorithm" data-project-date="Mar. 2024 - May. 2024"
+                        data-images="assets/pictures/Drosophilia/Odor_Source_moving.jpg, assets/pictures/Drosophilia/HRC_model.jpg" aria-label="Open details for Motion-based Olfactory Algorithm">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/Drosophilia/Drosophilia_Simulation.png');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Engineering Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Motion-based Olfactory Algorithm</h3>
+                        <p class="project-date">Mar. 2024 - May. 2024</p>
+                        </div>
+                        <p class="project-description">Designed a biologically inspired navigation algorithm for robust odor-source localization under uncertain plume and motion conditions.</p>
+                        <div class="project-tags">
+                        <span class="tag">Simulation Analysis (MuJoCo)</span>
+                        <span class="tag">Neuroscience Research (HRC model)</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+                    </div>
+                </section>
+
+                <section id="software-cloud" class="project-category-section project-category-section--narrow">
+                    <header class="project-category-header"><span>03</span><h3 class="project-category-heading">System, Cloud & Software Infrastructure</h3></header>
+                    <div class="projects-grid projects-grid-2x2">
+
+                        <article class="project-card" role="button" tabindex="0" data-project-id="ephemeral-vpn" data-project-title="Ephemeral VPN Gateway"
+                        data-project-date="Status: Completed (May 2026)"
+                        data-video="https://youtu.be/ojaqh5DFsbU"
+                        data-github="https://github.com/LeMonsieurPompidou/ephemeral-vpn-gateway" aria-label="Open details for Ephemeral VPN Gateway">
+                        <div class="project-thumb project-thumb--placeholder project-thumb--vpn" aria-hidden="true">
+                        <div class="project-thumb-vpn-scene" aria-hidden="true">
+                        <div class="project-thumb-vpn-mark" aria-hidden="true">
+                        <img src="assets/pictures/VPN/Hérès_VPN_logo.png" alt="" />
+                        </div>
+                        </div>
+                        </div>
+                        <span class="project-badge">Personal R&D / Open-Source</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Hérès VPN: Ephemeral Gateway Ecosystem</h3>
+                        <p class="project-date">Status: Active & Usable</p>
+                        </div>
+                        <p class="project-description">Designed and deployed a fully automated, multi-cloud (Scaleway/DigitalOcean) on-demand VPN gateway infrastructure using Terraform. Features an active Python/Kivy desktop GUI integration for instant session provisioning, secure key isolation, and automatic client QR-code extraction.</p>
+                        <div class="project-tags">
+                        <span class="tag">Terraform (IaC)</span>
+                        <span class="tag">Multi-Cloud (Scaleway/DigitalOcean)</span>
+                        <span class="tag">DevOps & Automation</span>
+                        <span class="tag">Python (Kivy GUI)</span>
+                        <span class="tag">Builder.io Prototyping</span>
+                        <span class="tag">Network Security</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <article class="project-card" role="button" tabindex="0" data-project-id="muscu-app" data-project-title="Musculation & Nutrition Tracker Ecosystem" data-project-date="May 2026" data-github="https://github.com/LeMonsieurPompidou/Musculationapplicationdesign" aria-label="Open details for Musculation & Nutrition Tracker Ecosystem">
+                        <div class="project-thumb project-thumb--placeholder" aria-hidden="true">
+                        <div class="project-thumb-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+                        <rect x="18" y="10" width="28" height="44" rx="6" />
+                        <rect x="24" y="16" width="16" height="3" rx="1.5" fill="currentColor" stroke="none" />
+                        <rect x="24" y="24" width="16" height="10" rx="2" />
+                        <path d="M22 40h20" />
+                        <path d="M26 36v8" />
+                        <path d="M32 34v12" />
+                        <path d="M38 38v6" />
+                        <circle cx="32" cy="50" r="2" fill="currentColor" stroke="none" />
+                        </svg>
+                        </div>
+                        </div>
+                        <span class="project-badge">Personal Application R&D</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Musculation & Nutrition Tracker Ecosystem</h3>
+                        <p class="project-date">Status: In Progress</p>
+                        </div>
+                        <p class="project-description">Designed a two-phase fitness platform spanning a public React/TypeScript design architecture and a private native Android tracker built with Python, Kivy, Buildozer, and SQLite for offline workout and nutrition management.</p>
+                        <div class="project-tags">
+                        <span class="tag">React/TypeScript</span>
+                        <span class="tag">UI/UX Architecture</span>
+                        <span class="tag">Mobile Engineering (Kivy)</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Figma Design</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+                        <!-- Computational Econometrics & Predictive Modeling -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="econometrics-r" data-project-title="Computational Econometrics & Predictive Modeling" data-project-date="Feb. 2023 - Jun. 2023" aria-label="Open details for Computational Econometrics & Predictive Modeling">
+                        <div class="project-thumb project-thumb--placeholder" aria-hidden="true">
+                        <div class="project-thumb-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+                        <path d="M10 52h44" />
+                        <path d="M14 52V18" />
+                        <rect x="20" y="34" width="6" height="12" rx="1.5" />
+                        <rect x="30" y="26" width="6" height="20" rx="1.5" />
+                        <rect x="40" y="18" width="6" height="28" rx="1.5" />
+                        <circle cx="22" cy="26" r="2.5" />
+                        <circle cx="34" cy="20" r="2.5" />
+                        <circle cx="46" cy="12" r="2.5" />
+                        <path d="M22 26c5-1 7-5 12-6s7-5 12-8" />
+                        </svg>
+                        </div>
+                        </div>
+                        <span class="project-badge">EPFL Analytics Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Computational Econometrics & Predictive Modeling</h3>
+                        <p class="project-date">Feb. 2023 - Jun. 2023</p>
+                        </div>
+                        <p class="project-description">Built a comprehensive predictive modeling and computational econometrics pipeline using RStudio to execute multivariate regressions, instrumental variable tracking, and rigorous statistical cross-validation on large-scale datasets.</p>
+                        <div class="project-tags">
+                        <span class="tag">R / RStudio</span>
+                        <span class="tag">Computational Econometrics</span>
+                        <span class="tag">Predictive Modeling</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">Data Science</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+
+
+                        <!-- Innovation management: Poppins' Sharing Boxes -->
+                        <article class="project-card" role="button" tabindex="0" data-project-id="poppins" data-project-title="Poppins' Sharing Boxes" data-project-date="Feb. 2023 - May. 2023"
+                        data-images="assets/pictures/poppins/Mobile_Application_User_Interface_&_UX_Workflow.png ,assets/pictures/poppins/Project_Lifecycle_Management_&_Launch_Gantt_Chart.png  ,assets/pictures/poppins/Strategic_Market_Validation_&_Stakeholder_Mapping.png"
+                        data-video=""
+                        data-pdf="assets/reports/Poppins_report.pdf" aria-label="Open details for Poppins' Sharing Boxes">
+                        <div class="project-thumb project-thumb--image" style="background-image: url('assets/pictures/poppins/Mobile_Application_User_Interface_&_UX_Workflow.png');" aria-hidden="true"></div>
+                        <span class="project-badge">EPFL Management Project</span>
+                        <div class="project-header">
+                        <h3 class="project-title">Poppins' Sharing Boxes</h3>
+                        <p class="project-date">Feb. 2023 - Jun. 2023</p>
+                        </div>
+                        <p class="project-description">Designed a smart-sharing locker concept with validated user and market assumptions to address urban resource access and sustainability constraints.</p>
+                        <div class="project-tags">
+                        <span class="tag">Innovation Management</span>
+                        <span class="tag">Business Planning</span>
+                        <span class="tag">Market Analysis</span>
+                        <span class="tag">Mobile App Design</span>
+                        </div>
+                        
+                        <div class="project-card-action" aria-hidden="true"><span>View project details</span><span class="project-card-arrow">&rarr;</span></div>
+                        </article>
+
+                    </div>
+                </section>
+            </div>
+        </section>
+
+
+</main>
+<footer class="footer">
+    <div class="container footer-bottom-content">
+        <p class="copyright">&copy; 2026 Sam Rahnemayan. Robotics engineer based in Switzerland.</p>
+        <div class="footer-links">
+            <a href="mailto:sam.rahnemayan@alumni.epfl.ch">Email</a>
+            <a href="https://www.linkedin.com/in/sam-rahnemayan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/LeMonsieurPompidou/portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </div>
+</footer>
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+
+            <div class="modal-content">
+                <div id="modal-gallery" class="modal-gallery"></div>
+
+                <div class="modal-header">
+                    <h2 id="modal-title" class="modal-title"></h2>
+                    <p id="modal-date" class="modal-date"></p>
+                </div>
+
+                <div class="modal-body">
+                    <section class="modal-section">
+                        <h3>Collaboration</h3>
+                        <p id="modal-collaboration"></p>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p id="modal-description"></p>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3>Project Details</h3>
+                        <p id="modal-report"></p>
+                    </section>
+
+                    <section class="modal-section">
+                        <h3>Tech Stack</h3>
+                        <div id="modal-tech-stack" class="tech-stack-list"></div>
+                    </section>
+
+                    <section class="modal-section" id="modal-recommendation-section" style="display: none;">
+                        <h3>Recommendation</h3>
+                        <blockquote id="modal-recommendation-quote"></blockquote>
+                        <cite id="modal-recommendation-author"></cite>
+                        <p><a id="modal-recommendation-pdf" href="#" target="_blank" rel="noopener noreferrer">View Full Letter of Recommendation (PDF)</a></p>
+                    </section>
+
+                    <section class="modal-section modal-links-section">
+                        <h3>Resources</h3>
+                        <div id="modal-links" class="modal-links"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="chatbot">
+        <button
+            id="chatbot-toggle"
+            class="chatbot-toggle"
+            type="button"
+            aria-label="Open chat with Sam's portfolio assistant"
+            aria-expanded="false"
+            aria-controls="chatbot-panel"
+        >
+            <span class="chatbot-toggle-icon" aria-hidden="true">AI</span>
+            <span class="chatbot-toggle-text">Ask Sam's AI</span>
+        </button>
+
+        <section id="chatbot-panel" class="chatbot-panel" aria-label="Portfolio AI chatbot" aria-hidden="true">
+            <header class="chatbot-header">
+                <div>
+                    <p class="chatbot-kicker">Robotics Engineer Assistant</p>
+                    <h2 class="chatbot-title">Sam's AI Chat</h2>
+                </div>
+                <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat window">&times;</button>
+            </header>
+
+            <div id="chatbot-messages" class="chatbot-messages" aria-live="polite" aria-relevant="additions text">
+                <div class="chatbot-message bot">
+                    <p>Hi, I’m Sam’s portfolio assistant. Ask me about robotics projects, control systems, or his background.</p>
+                </div>
+            </div>
+
+            <form id="chatbot-form" class="chatbot-form">
+                <label class="sr-only" for="chatbot-input">Type your message</label>
+                <input
+                    id="chatbot-input"
+                    class="chatbot-input"
+                    type="text"
+                    placeholder="Ask about projects, skills, or experience..."
+                    autocomplete="off"
+                >
+                <button type="submit" class="chatbot-send">Send</button>
+            </form>
+        </section>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

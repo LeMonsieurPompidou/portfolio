@@ -14,7 +14,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="brand-lockup">
-                    <a class="logo" href="index.html" aria-label="Sam Rahnemayan home">Sam Rahnemayan<span>Robotics Engineer</span></a>
+                    <a class="logo" href="index.html" aria-label="Sam Rahnemayan home">Sam Rahnemayan<span data-i18n="brand.role">Robotics Engineer</span></a>
                     <span class="institution-badge" aria-label="EPFL institutional endorsement">
                         <img src="assets/pictures/EPFL_logo.png" alt="EPFL logo">
                     </span>
@@ -22,11 +22,16 @@
                 <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
                 </button>
+                <div class="language-switcher" aria-label="Language selection">
+                    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+                </div>
                 <nav class="nav" id="nav-menu" aria-label="Primary navigation">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
-                        <li><a href="projects.html" class="nav-link">Projects</a></li>
-                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">Home</a></li>
+                        <li><a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+                        <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -36,22 +41,22 @@
     <section class="hero hero--home" id="home">
         <div class="container hero-layout">
             <div class="hero-content">
-                <h1>Sam Rahnemayan</h1>
-                <p class="hero-intro">An EPFL-trained robotics engineer dedicated to building autonomous and medical systems that translate mathematical models into measurable, real-world technology. By combining advanced control, sensing, and embedded integration with a strategic background in Management, Technology &amp; Entrepreneurship, I bridge complex engineering development with practical, data-driven product decisions.</p>
+                <h1 data-i18n="hero.title">Sam Rahnemayan</h1>
+                <p class="hero-intro" data-i18n="hero.intro">An EPFL-trained robotics engineer dedicated to building autonomous and medical systems that translate mathematical models into measurable, real-world technology. By combining advanced control, sensing, and embedded integration with a strategic background in Management, Technology &amp; Entrepreneurship, I bridge complex engineering development with practical, data-driven product decisions.</p>
                 <div class="hero-focus-areas">
-                    <h2>Focus Areas</h2>
+                    <h2 data-i18n="hero.focusTitle">Focus Areas</h2>
                     <ul class="skills-list">
-                        <li>Medical Robotics & Rehabilitation</li>
-                        <li>Autonomous Systems & Control</li>
-                        <li>Simulation, Sensing & Embedded Systems</li>
-                        <li>Human-Centered Technology</li>
-                        <li>Technology & Product Strategy</li>
-                        <li>Research-to-Real-World Validation</li>
+                        <li data-i18n="hero.focus.medical">Medical Robotics &amp; Rehabilitation</li>
+                        <li data-i18n="hero.focus.autonomy">Autonomous Systems &amp; Control</li>
+                        <li data-i18n="hero.focus.simulation">Simulation, Sensing &amp; Embedded Systems</li>
+                        <li data-i18n="hero.focus.human">Human-Centered Technology</li>
+                        <li data-i18n="hero.focus.strategy">Technology &amp; Product Strategy</li>
+                        <li data-i18n="hero.focus.validation">Research-to-Real-World Validation</li>
                     </ul>
                 </div>
                 <div class="hero-cta-group">
-                    <a href="projects.html" class="cta-button">View Projects</a>
-                    <a href="assets/reports/Sam_Rahnemayan_Resume.pdf" class="cta-button cta-button-secondary" download>Download CV</a>
+                    <a href="projects.html" class="cta-button" data-i18n="hero.cta.projects">View Projects</a>
+                    <a href="assets/reports/Sam_Rahnemayan_Resume.pdf" class="cta-button cta-button-secondary" download data-i18n="hero.cta.cv">Download CV</a>
                 </div>
             </div>
             <figure class="hero-media">
@@ -63,12 +68,12 @@
     <section class="recommendation-spotlight" aria-labelledby="spotlight-title">
         <div class="container">
             <div class="recommendation-spotlight-inner">
-                <p class="eyebrow">Academic Endorsement</p>
-                <blockquote id="spotlight-title">... This places him in the top 20% of master students [...].</blockquote>
+                <p class="eyebrow" data-i18n="recommendations.spotlightEyebrow">Academic Endorsement</p>
+                <blockquote id="spotlight-title" data-i18n="recommendations.spotlightQuote">... This places him in the top 20% of master students [...].</blockquote>
                 <cite>Prof. Auke Jan Ijspeert, EPFL</cite>
                 <div class="recommendation-spotlight-links">
-                    <a href="assets/recommendations/EPFL_Auke_Ijspeert.pdf" target="_blank" rel="noopener noreferrer">Read recommendation letter (PDF)</a>
-                    <a href="#recommendations">View all recommendations</a>
+                    <a href="assets/recommendations/EPFL_Auke_Ijspeert.pdf" target="_blank" rel="noopener noreferrer" data-i18n="recommendations.spotlightLink">Read recommendation letter (PDF)</a>
+                    <a href="#recommendations" data-i18n="recommendations.viewAll">View all recommendations</a>
                 </div>
             </div>
         </div>
@@ -76,25 +81,25 @@
 
 <section id="skills" class="skills-section">
             <div class="container">
-                <h2 class="section-title">Skills</h2>
+                <h2 class="section-title" data-i18n="skills.title">Skills</h2>
 
                 <div class="skills-grid">
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Robotics & Control</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.robotics">Robotics &amp; Control</h3>
                         <div class="skill-list">
-                            <span class="skill-tag" data-project-match="rocket-mpc, crazyfly, auto-nav">Controller (MPC, PID)</span>
-                            <span class="skill-tag" data-project-match="crazyfly, auto-nav">Computer Vision</span>
-                            <span class="skill-tag" data-project-match="auto-nav">Kalman Filters</span>
-                            <span class="skill-tag" data-project-match="auto-nav, crazyfly">Trajectory Planning (Dijkstra, A*)</span>
-                            <span class="skill-tag" data-project-match="crazyfly, auto-nav">State Estimation</span>
-                            <span class="skill-tag" data-project-match="robot-competition, auto-nav, crazyfly">Sensor Fusion</span>
-                            <span class="skill-tag" data-project-match="rocket-mpc">Optimization & Control Solvers (CasADi, Gurobi, YALMIP)</span>
+                            <span class="skill-tag" data-project-match="rocket-mpc, crazyfly, auto-nav" data-i18n="skills.items.controller">Controller (MPC, PID)</span>
+                            <span class="skill-tag" data-project-match="crazyfly, auto-nav" data-i18n="skills.items.computerVision">Computer Vision</span>
+                            <span class="skill-tag" data-project-match="auto-nav" data-i18n="skills.items.kalman">Kalman Filters</span>
+                            <span class="skill-tag" data-project-match="auto-nav, crazyfly" data-i18n="skills.items.trajectory">Trajectory Planning (Dijkstra, A*)</span>
+                            <span class="skill-tag" data-project-match="crazyfly, auto-nav" data-i18n="skills.items.stateEstimation">State Estimation</span>
+                            <span class="skill-tag" data-project-match="robot-competition, auto-nav, crazyfly" data-i18n="skills.items.sensorFusion">Sensor Fusion</span>
+                            <span class="skill-tag" data-project-match="rocket-mpc" data-i18n="skills.items.optimization">Optimization &amp; Control Solvers (CasADi, Gurobi, YALMIP)</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Programming & Tools</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.programming">Programming &amp; Tools</h3>
                         <div class="skill-list">
                             <span class="skill-tag" data-project-match="zebrafish, ephemeral-vpn, muscu-app, autonomyo, thesis, auto-nav">Python</span>
                             <span class="skill-tag" data-project-match="autonomyo, legov">C</span>
@@ -103,12 +108,12 @@
                             <span class="skill-tag" data-project-match="gait-phase, rocket-mpc">Matlab</span>
                             <span class="skill-tag" data-project-match="econometrics-r">RStudio</span>
                             <span class="skill-tag" data-project-match="thesis, autonomyo, legov, rocket-mpc, crazyfly, robot-competition, zebrafish, auto-nav, olfactory, ephemeral-vpn, muscu-app">Git</span>
-                            <span class="skill-tag" data-project-match="gait-phase, thesis">Machine Learning</span>
+                            <span class="skill-tag" data-project-match="gait-phase, thesis" data-i18n="skills.items.machineLearning">Machine Learning</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Simulation & Modeling</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.simulation">Simulation &amp; Modeling</h3>
                         <div class="skill-list">
                             <span class="skill-tag" data-project-match="autonomyo, legov">Unity</span>
                             <span class="skill-tag" data-project-match="crazyfly">Webots</span>
@@ -119,17 +124,17 @@
                     </div>
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Mechanical Engineering</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.mechanical">Mechanical Engineering</h3>
                         <div class="skill-list">
-                            <span class="skill-tag" data-project-match="autonomyo, robot-competition">CAD (Fusion, Onshape, SolidWorks, Catia)</span>
-                            <span class="skill-tag" data-project-match="robot-competition">Mechanical prototyping (3D printing, laser cutting, conventional machining)</span>
+                            <span class="skill-tag" data-project-match="autonomyo, robot-competition" data-i18n="skills.items.cad">CAD (Fusion, Onshape, SolidWorks, Catia)</span>
+                            <span class="skill-tag" data-project-match="robot-competition" data-i18n="skills.items.mechanicalPrototyping">Mechanical prototyping (3D printing, laser cutting, conventional machining)</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Electrical Engineering</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.electrical">Electrical Engineering</h3>
                         <div class="skill-list">
-                            <span class="skill-tag" data-project-match="autonomyo, legov, robot-competition">Sensors & actuators integration</span>
+                            <span class="skill-tag" data-project-match="autonomyo, legov, robot-competition" data-i18n="skills.items.sensorsActuators">Sensors &amp; actuators integration</span>
                             <span class="skill-tag" data-project-match="autonomyo">STM32CubeIDE</span>
                             <span class="skill-tag" data-project-match="autonomyo">ESP32</span>
                             <span class="skill-tag" data-project-match="autonomyo">PCB design (KiCad)</span>
@@ -137,13 +142,13 @@
                     </div>
 
                     <div class="skill-category">
-                        <h3 class="skill-category-title">Systems & Software Architecture</h3>
+                        <h3 class="skill-category-title" data-i18n="skills.categories.architecture">Systems &amp; Software Architecture</h3>
                         <div class="skill-list">
-                            <span class="skill-tag" data-project-match="ephemeral-vpn">Cloud Infrastructure (Terraform)</span>
+                            <span class="skill-tag" data-project-match="ephemeral-vpn" data-i18n="skills.items.cloudInfrastructure">Cloud Infrastructure (Terraform)</span>
                             <span class="skill-tag" data-project-match="ephemeral-vpn">DevOps & Automation</span>
-                            <span class="skill-tag" data-project-match="ephemeral-vpn, muscu-app">Mobile App Engineering (Kivy)</span>
+                            <span class="skill-tag" data-project-match="ephemeral-vpn, muscu-app" data-i18n="skills.items.mobileApp">Mobile App Engineering (Kivy)</span>
                             <span class="skill-tag" data-project-match="muscu-app, poppins, ephemeral-vpn">UI/UX Prototyping (Figma)</span>
-                            <span class="skill-tag" data-project-match="muscu-app">Relational Databases (SQLite)</span>
+                            <span class="skill-tag" data-project-match="muscu-app" data-i18n="skills.items.relationalDatabases">Relational Databases (SQLite)</span>
                             <span class="skill-tag" data-project-match="muscu-app">TypeScript / React</span>
                         </div>
                     </div>
@@ -154,8 +159,8 @@
     <section id="recommendations" class="page-section recommendations-section">
         <div class="container">
             <div class="section-heading">
-                <p class="eyebrow">Recommendations</p>
-                <h2>Recommendations from Research and Industry</h2>
+                <p class="eyebrow" data-i18n="recommendations.eyebrow">Recommendations</p>
+                <h2 data-i18n="recommendations.title">Recommendations from Research and Industry</h2>
             </div>
             <div class="recommendations-grid" id="dynamic-recommendations-container" aria-live="polite"></div>
         </div>
@@ -163,7 +168,7 @@
 </main>
 <footer class="footer">
     <div class="container footer-bottom-content">
-        <p class="copyright">&copy; 2026 Sam Rahnemayan. Robotics engineer based in Switzerland.</p>
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Sam Rahnemayan. Robotics engineer based in Switzerland.</p>
         <div class="footer-links">
             <a href="mailto:sam.rahnemayan@alumni.epfl.ch">Email</a>
             <a href="https://www.linkedin.com/in/sam-rahnemayan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -180,22 +185,22 @@
             aria-expanded="false"
             aria-controls="chatbot-panel"
         >
-            <span class="chatbot-toggle-icon" aria-hidden="true">AI</span>
-            <span class="chatbot-toggle-text">Ask Sam's AI</span>
+            <span class="chatbot-toggle-icon" aria-hidden="true" data-i18n="chatbot.toggleIcon">AI</span>
+            <span class="chatbot-toggle-text" data-i18n="chatbot.toggleText">Ask Sam's AI</span>
         </button>
 
         <section id="chatbot-panel" class="chatbot-panel" aria-label="Portfolio AI chatbot" aria-hidden="true">
             <header class="chatbot-header">
                 <div>
-                    <p class="chatbot-kicker">Robotics Engineer Assistant</p>
-                    <h2 class="chatbot-title">Sam's AI Chat</h2>
+                    <p class="chatbot-kicker" data-i18n="chatbot.kicker">Robotics Engineer Assistant</p>
+                    <h2 class="chatbot-title" data-i18n="chatbot.title">Sam's AI Chat</h2>
                 </div>
                 <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat window">&times;</button>
             </header>
 
             <div id="chatbot-messages" class="chatbot-messages" aria-live="polite" aria-relevant="additions text">
                 <div class="chatbot-message bot">
-                    <p>Hi, I’m Sam’s portfolio assistant. Ask me about robotics projects, control systems, or his background.</p>
+                    <p data-i18n="chatbot.welcomeMessage">Hi, I'm Sam's portfolio assistant. Ask me about robotics projects, control systems, or his background.</p>
                 </div>
             </div>
 
@@ -206,9 +211,10 @@
                     class="chatbot-input"
                     type="text"
                     placeholder="Ask about projects, skills, or experience..."
+                    data-i18n-placeholder="chatbot.inputPlaceholder"
                     autocomplete="off"
                 >
-                <button type="submit" class="chatbot-send">Send</button>
+                <button type="submit" class="chatbot-send" data-i18n="chatbot.send">Send</button>
             </form>
         </section>
     </div>

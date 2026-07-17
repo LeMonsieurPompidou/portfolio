@@ -13,15 +13,25 @@
     <header class="header">
         <div class="container">
             <div class="nav-wrapper">
-                <a class="logo" href="index.html" aria-label="Sam Rahnemayan home">Sam Rahnemayan<span>Robotics Engineer</span></a>
+                <div class="brand-lockup">
+                    <a class="logo" href="index.html" aria-label="Sam Rahnemayan home">Sam Rahnemayan<span data-i18n="brand.role">Robotics Engineer</span></a>
+                    <span class="institution-badge" aria-label="EPFL institutional endorsement">
+                        <img src="assets/pictures/EPFL_logo.png" alt="EPFL logo">
+                    </span>
+                </div>
                 <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
                 </button>
+                <div class="language-switcher" aria-label="Language selection">
+                    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="fr">FR</button>
+                </div>
                 <nav class="nav" id="nav-menu" aria-label="Primary navigation">
                     <ul class="nav-list">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="projects.html" class="nav-link active" aria-current="page">Projects</a></li>
-                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
+                        <li><a href="projects.html" class="nav-link active" aria-current="page" data-i18n="nav.projects">Projects</a></li>
+                        <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -31,19 +41,19 @@
         <!-- Projects Section -->
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title" data-i18n="projects.title">Projects</h2>
 
                 <nav class="projects-sub-nav" aria-label="Project categories">
-                    <a href="#med-robotics" aria-label="Medical Robotics and Rehabilitation Engineering">Medical Robotics</a>
-                    <a href="#auto-systems" aria-label="Autonomous Systems and Control Engineering">Autonomous Systems</a>
-                    <a href="#software-cloud" aria-label="System, Cloud and Software Infrastructure">Software & Cloud</a>
+                    <a href="#med-robotics" aria-label="Medical Robotics and Rehabilitation Engineering" data-i18n="projects.categories.medical">Medical Robotics</a>
+                    <a href="#auto-systems" aria-label="Autonomous Systems and Control Engineering" data-i18n="projects.categories.autonomous">Autonomous Systems</a>
+                    <a href="#software-cloud" aria-label="System, Cloud and Software Infrastructure" data-i18n="projects.categories.software">Software &amp; Cloud</a>
                 </nav>
 
                 <div class="project-search" role="search">
-                    <label for="project-search-input">Search projects</label>
+                    <label for="project-search-input" data-i18n="projects.search.label">Search projects</label>
                     <div class="project-search-field">
                         <span class="project-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg></span>
-                        <input id="project-search-input" type="search" placeholder="Search projects, tools, or methods" autocomplete="off">
+                        <input id="project-search-input" type="search" placeholder="Search projects, tools, or methods" autocomplete="off" data-i18n-placeholder="projects.search.placeholder">
                         <button id="project-search-clear" type="button" aria-label="Clear project search" hidden>Clear</button>
                     </div>
                     <p id="project-search-status" class="sr-only" aria-live="polite"></p>
@@ -51,7 +61,7 @@
                 <p id="project-search-empty" class="project-search-empty" hidden>No projects found. Try a different term.</p>
 
                 <section id="med-robotics" class="project-category-section project-category-section--narrow">
-                    <header class="project-category-header"><span>01</span><h3 class="project-category-heading">Medical Robotics & Rehabilitation Engineering</h3></header>
+                    <header class="project-category-header"><span>01</span><h3 class="project-category-heading" data-i18n="projects.headings.medical">Medical Robotics &amp; Rehabilitation Engineering</h3></header>
                     <div class="projects-grid projects-grid-2x2">
 
 
@@ -72,7 +82,7 @@
                         <h3 class="project-title">Master Thesis: Neuromuscular Adaptation to Exoskeleton Assistance</h3>
                         <p class="project-date">Sept. 2025 - Apr. 2026</p>
                         </div>
-                        <p class="project-description">Developed a multi-modal experimental framework to quantify neuromuscular adaptation under upper-limb exoskeleton assistance and reveal clinically actionable coordination patterns.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.thesis">Developed a multi-modal experimental framework to quantify neuromuscular adaptation under upper-limb exoskeleton assistance and reveal clinically actionable coordination patterns.</p>
                         <div class="project-tags">
                         <span class="tag">International Research</span>
                         <span class="tag">ArmeoPower Exoskeleton</span>
@@ -98,7 +108,7 @@
                         <h3 class="project-title">Rehabilitation Game & Instrumented Soles</h3>
                         <p class="project-date">Jul. 2024 - Jan. 2025</p>
                         </div>
-                        <p class="project-description">Engineered a full-stack rehabilitation platform combining instrumented insoles, embedded telemetry, and a Unity interface to deliver real-time gait biofeedback.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.autonomyo">Engineered a full-stack rehabilitation platform combining instrumented insoles, embedded telemetry, and a Unity interface to deliver real-time gait biofeedback.</p>
                         <div class="project-tags">
                         <span class="tag">Unity</span>
                         <span class="tag">UDP Network Communication</span>
@@ -125,7 +135,7 @@
                         <h3 class="project-title">Virtual Environment for Rehabilitation</h3>
                         <p class="project-date">Feb. 2024 - Jun. 2024</p>
                         </div>
-                        <p class="project-description">Developed a gamified rehabilitation environment that integrated FES-driven exercise protocols with interactive feedback to improve engagement and repeatability.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.legov">Developed a gamified rehabilitation environment that integrated FES-driven exercise protocols with interactive feedback to improve engagement and repeatability.</p>
                         <div class="project-tags">
                         <span class="tag">Unity</span>
                         <span class="tag">UDP Network Communication</span>
@@ -147,7 +157,7 @@
                         <h3 class="project-title">Gait Phase Detection for Assisted Walking</h3>
                         <p class="project-date">Feb. 2023 - Jul. 2023</p>
                         </div>
-                        <p class="project-description">Built a multimodal analysis workflow to detect gait events and quantify biomechanical adaptations across assisted and unassisted walking conditions.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.gait-phase">Built a multimodal analysis workflow to detect gait events and quantify biomechanical adaptations across assisted and unassisted walking conditions.</p>
                         <div class="project-tags">
                         <span class="tag">Matlab</span>
                         <span class="tag">PCA</span>
@@ -162,7 +172,7 @@
                 </section>
 
                 <section id="auto-systems" class="project-category-section">
-                    <header class="project-category-header"><span>02</span><h3 class="project-category-heading">Autonomous Systems & Control Engineering</h3></header>
+                    <header class="project-category-header"><span>02</span><h3 class="project-category-heading" data-i18n="projects.headings.autonomous">Autonomous Systems &amp; Control Engineering</h3></header>
                     <div class="projects-grid">
 
 
@@ -175,7 +185,7 @@
                         <h3 class="project-title">Rocket Drone MPC Controller Design</h3>
                         <p class="project-date">Oct. 2023 - Jan. 2024</p>
                         </div>
-                        <p class="project-description">Implemented stabilizing linear and nonlinear MPC controllers to track thrust-vectoring trajectories on an underactuated rocket-drone platform.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.rocket-mpc">Implemented stabilizing linear and nonlinear MPC controllers to track thrust-vectoring trajectories on an underactuated rocket-drone platform.</p>
                         <div class="project-tags">
                         <span class="tag">Linear/Nonlinear MPC</span>
                         <span class="tag">Multivariable Control</span>
@@ -195,7 +205,7 @@
                         <h3 class="project-title">Drone Control (Crazyfly)</h3>
                         <p class="project-date">Mar. 2025 - May 2025 </p>
                         </div>
-                        <p class="project-description">Built a simulation-to-flight control stack enabling autonomous gate traversal with computer vision and cascaded PID control on physical quadrotor hardware.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.crazyfly">Built a simulation-to-flight control stack enabling autonomous gate traversal with computer vision and cascaded PID control on physical quadrotor hardware.</p>
                         <div class="project-tags">
                         <span class="tag">Computer Vision</span>
                         <span class="tag">Control Systems</span>
@@ -220,7 +230,7 @@
                         <h3 class="project-title">Autonomous Duplo-Collector Robot</h3>
                         <p class="project-date">Feb. 2025 - Jun. 2025 </p>
                         </div>
-                        <p class="project-description">Delivered the end-to-end architecture of an autonomous competition robot for reliable brick detection, collection, and zone-aware delivery in a constrained arena.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.robot-competition">Delivered the end-to-end architecture of an autonomous competition robot for reliable brick detection, collection, and zone-aware delivery in a constrained arena.</p>
                         <div class="project-tags">
                         <span class="tag">Mechanical Design</span>
                         <span class="tag">Project Management</span>
@@ -241,7 +251,7 @@
                         <h3 class="project-title">Locomotion in Zebrafish</h3>
                         <p class="project-date">Mar. 2025 - Jun. 2025 </p>
                         </div>
-                        <p class="project-description">Developed a computational biomechanics pipeline to study neural locomotion strategies through CPG-driven swimming dynamics and proprioceptive feedback loops.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.zebrafish">Developed a computational biomechanics pipeline to study neural locomotion strategies through CPG-driven swimming dynamics and proprioceptive feedback loops.</p>
                         <div class="project-tags">
                         <span class="tag">Computational Modeling (MuJoCo)</span>
                         <span class="tag">CPG Control Systems</span>
@@ -263,7 +273,7 @@
                         <h3 class="project-title">Autonomous Navigation for a Wheeled Robot</h3>
                         <p class="project-date">Sep. 2023 - Dec. 2023</p>
                         </div>
-                        <p class="project-description">Developed a perception-to-planning stack for autonomous navigation with obstacle avoidance and state estimation in uncertain 2D environments.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.auto-nav">Developed a perception-to-planning stack for autonomous navigation with obstacle avoidance and state estimation in uncertain 2D environments.</p>
                         <div class="project-tags">
                         <span class="tag">A* Algorithm</span>
                         <span class="tag">Kalman Filter</span>
@@ -283,7 +293,7 @@
                         <h3 class="project-title">Motion-based Olfactory Algorithm</h3>
                         <p class="project-date">Mar. 2024 - May. 2024</p>
                         </div>
-                        <p class="project-description">Designed a biologically inspired navigation algorithm for robust odor-source localization under uncertain plume and motion conditions.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.olfactory">Designed a biologically inspired navigation algorithm for robust odor-source localization under uncertain plume and motion conditions.</p>
                         <div class="project-tags">
                         <span class="tag">Simulation Analysis (MuJoCo)</span>
                         <span class="tag">Neuroscience Research (HRC model)</span>
@@ -296,7 +306,7 @@
                 </section>
 
                 <section id="software-cloud" class="project-category-section project-category-section--narrow">
-                    <header class="project-category-header"><span>03</span><h3 class="project-category-heading">System, Cloud & Software Infrastructure</h3></header>
+                    <header class="project-category-header"><span>03</span><h3 class="project-category-heading" data-i18n="projects.headings.software">System, Cloud &amp; Software Infrastructure</h3></header>
                     <div class="projects-grid projects-grid-2x2">
 
                         <article class="project-card" role="button" tabindex="0" data-project-id="ephemeral-vpn" data-project-title="Ephemeral VPN Gateway"
@@ -315,7 +325,7 @@
                         <h3 class="project-title">Hérès VPN: Ephemeral Gateway Ecosystem</h3>
                         <p class="project-date">Status: Active & Usable</p>
                         </div>
-                        <p class="project-description">Designed and deployed a fully automated, multi-cloud (Scaleway/DigitalOcean) on-demand VPN gateway infrastructure using Terraform. Features an active Python/Kivy desktop GUI integration for instant session provisioning, secure key isolation, and automatic client QR-code extraction.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.ephemeral-vpn">Designed and deployed a fully automated, multi-cloud (Scaleway/DigitalOcean) on-demand VPN gateway infrastructure using Terraform. Features an active Python/Kivy desktop GUI integration for instant session provisioning, secure key isolation, and automatic client QR-code extraction.</p>
                         <div class="project-tags">
                         <span class="tag">Terraform (IaC)</span>
                         <span class="tag">Multi-Cloud (Scaleway/DigitalOcean)</span>
@@ -349,7 +359,7 @@
                         <h3 class="project-title">Musculation & Nutrition Tracker Ecosystem</h3>
                         <p class="project-date">Status: In Progress</p>
                         </div>
-                        <p class="project-description">Designed a two-phase fitness platform spanning a public React/TypeScript design architecture and a private native Android tracker built with Python, Kivy, Buildozer, and SQLite for offline workout and nutrition management.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.muscu-app">Designed a two-phase fitness platform spanning a public React/TypeScript design architecture and a private native Android tracker built with Python, Kivy, Buildozer, and SQLite for offline workout and nutrition management.</p>
                         <div class="project-tags">
                         <span class="tag">React/TypeScript</span>
                         <span class="tag">UI/UX Architecture</span>
@@ -384,7 +394,7 @@
                         <h3 class="project-title">Computational Econometrics & Predictive Modeling</h3>
                         <p class="project-date">Feb. 2023 - Jun. 2023</p>
                         </div>
-                        <p class="project-description">Built a comprehensive predictive modeling and computational econometrics pipeline using RStudio to execute multivariate regressions, instrumental variable tracking, and rigorous statistical cross-validation on large-scale datasets.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.econometrics-r">Built a comprehensive predictive modeling and computational econometrics pipeline using RStudio to execute multivariate regressions, instrumental variable tracking, and rigorous statistical cross-validation on large-scale datasets.</p>
                         <div class="project-tags">
                         <span class="tag">R / RStudio</span>
                         <span class="tag">Computational Econometrics</span>
@@ -409,7 +419,7 @@
                         <h3 class="project-title">Poppins' Sharing Boxes</h3>
                         <p class="project-date">Feb. 2023 - Jun. 2023</p>
                         </div>
-                        <p class="project-description">Designed a smart-sharing locker concept with validated user and market assumptions to address urban resource access and sustainability constraints.</p>
+                        <p class="project-description" data-i18n="projects.descriptions.poppins">Designed a smart-sharing locker concept with validated user and market assumptions to address urban resource access and sustainability constraints.</p>
                         <div class="project-tags">
                         <span class="tag">Innovation Management</span>
                         <span class="tag">Business Planning</span>
@@ -429,7 +439,7 @@
 </main>
 <footer class="footer">
     <div class="container footer-bottom-content">
-        <p class="copyright">&copy; 2026 Sam Rahnemayan. Robotics engineer based in Switzerland.</p>
+        <p class="copyright" data-i18n="footer.copyright">&copy; 2026 Sam Rahnemayan. Robotics engineer based in Switzerland.</p>
         <div class="footer-links">
             <a href="mailto:sam.rahnemayan@alumni.epfl.ch">Email</a>
             <a href="https://www.linkedin.com/in/sam-rahnemayan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -453,34 +463,34 @@
 
                 <div class="modal-body">
                     <section class="modal-section">
-                        <h3>Collaboration</h3>
+                        <h3 data-i18n="modal.collaborationTitle">Collaboration</h3>
                         <p id="modal-collaboration"></p>
                     </section>
 
                     <section class="modal-section">
-                        <h3>Project Overview</h3>
+                        <h3 data-i18n="modal.overviewTitle">Project Overview</h3>
                         <p id="modal-description"></p>
                     </section>
 
                     <section class="modal-section">
-                        <h3>Project Details</h3>
+                        <h3 data-i18n="modal.detailsTitle">Project Details</h3>
                         <p id="modal-report"></p>
                     </section>
 
                     <section class="modal-section">
-                        <h3>Tech Stack</h3>
+                        <h3 data-i18n="modal.techTitle">Tech Stack</h3>
                         <div id="modal-tech-stack" class="tech-stack-list"></div>
                     </section>
 
                     <section class="modal-section" id="modal-recommendation-section" style="display: none;">
-                        <h3>Recommendation</h3>
+                        <h3 data-i18n="modal.recommendationTitle">Recommendation</h3>
                         <blockquote id="modal-recommendation-quote"></blockquote>
                         <cite id="modal-recommendation-author"></cite>
-                        <p><a id="modal-recommendation-pdf" href="#" target="_blank" rel="noopener noreferrer">View Full Letter of Recommendation (PDF)</a></p>
+                        <p><a id="modal-recommendation-pdf" href="#" target="_blank" rel="noopener noreferrer" data-i18n="modal.recommendationLink">View Full Letter of Recommendation (PDF)</a></p>
                     </section>
 
                     <section class="modal-section modal-links-section">
-                        <h3>Resources</h3>
+                        <h3 data-i18n="modal.resourcesTitle">Resources</h3>
                         <div id="modal-links" class="modal-links"></div>
                     </section>
                 </div>
@@ -498,22 +508,22 @@
             aria-expanded="false"
             aria-controls="chatbot-panel"
         >
-            <span class="chatbot-toggle-icon" aria-hidden="true">AI</span>
-            <span class="chatbot-toggle-text">Ask Sam's AI</span>
+            <span class="chatbot-toggle-icon" aria-hidden="true" data-i18n="chatbot.toggleIcon">AI</span>
+            <span class="chatbot-toggle-text" data-i18n="chatbot.toggleText">Ask Sam's AI</span>
         </button>
 
         <section id="chatbot-panel" class="chatbot-panel" aria-label="Portfolio AI chatbot" aria-hidden="true">
             <header class="chatbot-header">
                 <div>
-                    <p class="chatbot-kicker">Robotics Engineer Assistant</p>
-                    <h2 class="chatbot-title">Sam's AI Chat</h2>
+                    <p class="chatbot-kicker" data-i18n="chatbot.kicker">Robotics Engineer Assistant</p>
+                    <h2 class="chatbot-title" data-i18n="chatbot.title">Sam's AI Chat</h2>
                 </div>
                 <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat window">&times;</button>
             </header>
 
             <div id="chatbot-messages" class="chatbot-messages" aria-live="polite" aria-relevant="additions text">
                 <div class="chatbot-message bot">
-                    <p>Hi, I’m Sam’s portfolio assistant. Ask me about robotics projects, control systems, or his background.</p>
+                    <p data-i18n="chatbot.welcomeMessage">Hi, I'm Sam's portfolio assistant. Ask me about robotics projects, control systems, or his background.</p>
                 </div>
             </div>
 
@@ -524,9 +534,10 @@
                     class="chatbot-input"
                     type="text"
                     placeholder="Ask about projects, skills, or experience..."
+                    data-i18n-placeholder="chatbot.inputPlaceholder"
                     autocomplete="off"
                 >
-                <button type="submit" class="chatbot-send">Send</button>
+                <button type="submit" class="chatbot-send" data-i18n="chatbot.send">Send</button>
             </form>
         </section>
     </div>

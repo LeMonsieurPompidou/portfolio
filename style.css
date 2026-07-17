@@ -190,6 +190,8 @@
     min-width: 0;
     align-items: center;
     gap: 0.8rem;
+    margin-right: auto;
+    order: 1;
 }
 
 .institution-badge {
@@ -206,6 +208,52 @@
     max-width: 86px;
     max-height: 24px;
     object-fit: contain;
+}
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    flex: 0 0 auto;
+    order: 2;
+    padding: 0.2rem 0.35rem;
+}
+
+.lang-btn {
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--font-family-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible,
+.lang-btn.active {
+    color: var(--brand-strong);
+}
+
+.lang-btn.active {
+    font-weight: 700;
+}
+
+.lang-divider {
+    color: var(--border-strong);
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+.nav {
+    order: 3;
+}
+
+.hamburger {
+    order: 4;
 }
 
 .hero-intro {
@@ -313,6 +361,15 @@
     text-decoration: underline;
 }
 
+.recommendations-language-note {
+    max-width: 72ch;
+    margin: calc(-1 * var(--space-4)) 0 var(--space-4);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-style: italic;
+    line-height: 1.55;
+}
+
 .project-card-action {
     display: flex;
     align-items: center;
@@ -367,6 +424,11 @@
     .institution-badge img {
         max-width: 72px;
         max-height: 20px;
+    }
+
+    .language-switcher {
+        margin-left: auto;
+        padding-right: 0;
     }
 
     .hero-intro {
@@ -604,4 +666,9 @@
         flex-direction: column;
         gap: 0.35rem;
     }
+}
+
+.project-date,
+.modal-date {
+    text-transform: uppercase;
 }
